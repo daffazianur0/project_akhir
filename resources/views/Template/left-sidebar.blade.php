@@ -55,7 +55,7 @@
               <span>
                 <i class="ti ti-file-description"></i>
               </span>
-              <span class="hide-menu">Forms</span>
+              <span class="hide-menu">kapal wajib retribusi</span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -63,7 +63,7 @@
               <span>
                 <i class="ti ti-typography"></i>
               </span>
-              <span class="hide-menu">Typography</span>
+              <span class="hide-menu">pembayaran retribusi</span>
             </a>
           </li>
           <li class="nav-small-cap">
