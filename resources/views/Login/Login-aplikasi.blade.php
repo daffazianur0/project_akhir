@@ -13,8 +13,8 @@
 
 	<style>
 		.login-wrap .icon img {
-		  width: 300%;
-		  height: 300%;
+		  width: 400%;
+		  height: 400%;
 		  border-radius: 50%;
 		  object-fit: cover;  
 		}
