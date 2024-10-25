@@ -22,7 +22,7 @@
 		      	<div class="icon d-flex align-items-center justify-content-center">
 		      		<span class="fa fa-user-o"></span>
 		      	</div>
-		      	<h3 class="text-center mb-4">Login SIREBON</h3>
+		      	<h3 class="text-center mb-4">LOGIN SIREBON</h3>
 						<form action="{{ route('postlogin')}}" method="post" class="login-form">
                             @csrf
 		      		<div class="form-group">
@@ -36,7 +36,7 @@
 								</div>
 	            </div>
 	            <div class="form-group">
-	            	<button type="submit" class="btn btn-primary rounded submit p-3 px-5">Get Started</button>
+	            	<button type="submit" class="btn btn-primary rounded submit p-3 px-5">LOGIN</button>
 	            </div>
 	          </form>
 	        </div>
