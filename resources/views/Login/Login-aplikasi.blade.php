@@ -11,6 +11,16 @@
 
 	<link rel="stylesheet" href="{{ asset('StyleLogin/css/style.css')}}">
 
+	<style>
+		.login-wrap .icon img {
+		  width: 300%;
+		  height: 300%;
+		  border-radius: 50%;
+		  object-fit: cover;  
+		}
+	  </style>
+
+
 	</head>
 	<body>
 	<section class="ftco-section">
@@ -20,7 +30,7 @@
 				<div class="col-md-6 col-lg-5">
 					<div class="login-wrap p-4 p-md-5">
 		      	<div class="icon d-flex align-items-center justify-content-center">
-		      		<span class="fa fa-user-o"></span>
+					<img src="{{ asset('images/logo-icon.jpg') }}" alt="Login Icon" style="width: 50px; height: 50px;">
 		      	</div>
 		      	<h3 class="text-center mb-4">LOGIN SIREBON</h3>
 						<form action="{{ route('postlogin')}}" method="post" class="login-form">
@@ -32,7 +42,7 @@
 	              <input type="password" class="form-control rounded-left" placeholder="Password" name="password" required>
 	            </div>
 								<div class="w-50 text-md-right">
-									<a href="#">Forgot Password</a>
+									<a href="#">Lupa Password</a>
 								</div>
 	            </div>
 	            <div class="form-group">
