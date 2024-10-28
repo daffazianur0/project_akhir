@@ -21,6 +21,6 @@ Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
 });
 
 Route::group(['middleware' => ['auth','ceklevel:karyawan']], function () {
-    
+
 });
 

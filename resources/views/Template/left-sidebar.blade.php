@@ -13,13 +13,13 @@
       <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
         <ul id="sidebarnav">
           <li class="nav-small-cap">
-            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+            <i class="ti ti-home nav-small-cap-icon fs-4"></i>
             <span class="hide-menu">Home</span>
           </li>
           <li class="sidebar-item">
             <a class="sidebar-link" href="./index.html" aria-expanded="false">
               <span>
-                <i class="ti ti-layout-dashboard"></i>
+                <i class="ti ti-home"></i>
               </span>
               <span class="hide-menu">beranda</span>
             </a>
@@ -27,7 +27,7 @@
           <li class="sidebar-item">
             <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
               <span>
-                <i class="ti ti-article"></i>
+                <i class="ti ti-wallet"></i>
               </span>
               <span class="hide-menu">Rekening pembayaran
                 retribusi</span>
@@ -68,45 +68,31 @@
           </li>
           <li class="nav-small-cap">
             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">AUTH</span>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
-              <span>
-                <i class="ti ti-logout"></i>
-              </span>
-              <span class="hide-menu">Logout</span>
-            </a>
-          </li>
+            <span class="hide-menu">laporan</span>
+
           <li class="sidebar-item">
             <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
               <span>
                 <i class="ti ti-user-plus"></i>
               </span>
-              <span class="hide-menu">Register</span>
+              <span class="hide-menu">retribusi</span>
             </a>
-          </li>
-          <li class="nav-small-cap">
-            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">EXTRA</span>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-              <span>
-                <i class="ti ti-mood-happy"></i>
-              </span>
-              <span class="hide-menu">Icons</span>
-            </a>
-          </li>
-          <li class="sidebar-item">
-            <a class="sidebar-link" href="./sample-page.html" aria-expanded="false">
-              <span>
-                <i class="ti ti-aperture"></i>
-              </span>
-              <span class="hide-menu">Sample Page</span>
-            </a>
-          </li>
-        </ul>
+            <li class="sidebar-item">
+                <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
+                  <span>
+                    <i class="ti ti-mood-happy"></i>
+                  </span>
+                  <span class="hide-menu">belum membayar retribusi</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{ route('logout')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-logout"></i>
+                </span>
+                <span class="hide-menu">Logout</span>
+              </a>
+            </li>
         <div class="unlimited-access hide-menu bg-light-primary position-relative mb-7 mt-5 rounded">
           <div class="d-flex">
             <div class="unlimited-access-title me-3">
