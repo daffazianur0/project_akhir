@@ -290,14 +290,14 @@
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">jumlah sudah bayar</h6>
                 <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold fs-4 mb-0">$50 <span class="ms-2 fw-normal text-muted fs-3"><del>$65</del></span></h6>
+                  <h6 class="fw-semibold fs-4 mb-0">50 <span class="ms-2 fw-normal text-muted fs-3"></span></h6>
                   <ul class="list-unstyled d-flex align-items-center mb-0">
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-        
+
           <div class="col-sm-6 col-xl-4">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
@@ -305,14 +305,14 @@
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">jumlah belum bayar</h6>
                 <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold fs-4 mb-0">$650 <span class="ms-2 fw-normal text-muted fs-3"><del>$900</del></span></h6>
+                  <h6 class="fw-semibold fs-4 mb-0">$650 <span class="ms-2 fw-normal text-muted fs-3"></span></h6>
                   <ul class="list-unstyled d-flex align-items-center mb-0">
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-        
+
           <div class="col-sm-6 col-xl-4">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
@@ -320,16 +320,16 @@
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">jumlah pemasukan</h6>
                 <div class="d-flex align-items-center justify-content-between">
-                  <h6 class="fw-semibold fs-4 mb-0">$150 <span class="ms-2 fw-normal text-muted fs-3"><del>$200</del></span></h6>
-                  <ul class="list-unstyled d-flex align-items-center mb-0">     
+                  <h6 class="fw-semibold fs-4 mb-0">$150 <span class="ms-2 fw-normal text-muted fs-3">web</span></h6>
+                  <ul class="list-unstyled d-flex align-items-center mb-0">
                   </ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        
-            
+
+
           {{-- </div>
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
