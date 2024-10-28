@@ -22,11 +22,11 @@
       <div class="container-fluid">
         <!--  Row 1 -->
         <div class="row">
-          <div class="col-lg-8 d-flex align-items-strech">
+          <div class="col-lg-100 d-flex align-items-strech">
             <div class="card w-100">
               <div class="card-body">
-                <div class="d-sm-flex d-block align-items-center justify-content-between mb-9">
-                  <div class="mb-3 mb-sm-0">
+                <div class="d-sm-flex d-block align-items-center justify-content-between mb-10">
+                  <div class="mb-4 mb-sm-0">
                     <h5 class="card-title fw-semibold"></h5>
                   </div>
                   {{-- <div>
@@ -283,65 +283,53 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-7 col-xl-5">
+          <div class="col-sm-6 col-xl-4">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s4.jpg" class="card-img-top rounded-0" alt="..."></a>
-                <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
+              </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">jumlah sudah bayar</h6>
                 <div class="d-flex align-items-center justify-content-between">
                   <h6 class="fw-semibold fs-4 mb-0">$50 <span class="ms-2 fw-normal text-muted fs-3"><del>$65</del></span></h6>
                   <ul class="list-unstyled d-flex align-items-center mb-0">
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-7 col-xl-5">
+        
+          <div class="col-sm-6 col-xl-4">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s5.jpg" class="card-img-top rounded-0" alt="..."></a>
-                <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
+              </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">jumlah belum bayar</h6>
                 <div class="d-flex align-items-center justify-content-between">
                   <h6 class="fw-semibold fs-4 mb-0">$650 <span class="ms-2 fw-normal text-muted fs-3"><del>$900</del></span></h6>
                   <ul class="list-unstyled d-flex align-items-center mb-0">
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-sm-6 col-xl-3">
+        
+          <div class="col-sm-6 col-xl-4">
             <div class="card overflow-hidden rounded-2">
               <div class="position-relative">
-                <a href="javascript:void(0)"><img src="../assets/images/products/s7.jpg" class="card-img-top rounded-0" alt="..."></a>
-                <a href="javascript:void(0)" class="bg-primary rounded-circle p-2 text-white d-inline-flex position-absolute bottom-0 end-0 mb-n3 me-3" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Add To Cart"><i class="ti ti-basket fs-4"></i></a>                      </div>
+              </div>
               <div class="card-body pt-3 p-4">
                 <h6 class="fw-semibold fs-4">jumlah pemasukan</h6>
                 <div class="d-flex align-items-center justify-content-between">
                   <h6 class="fw-semibold fs-4 mb-0">$150 <span class="ms-2 fw-normal text-muted fs-3"><del>$200</del></span></h6>
-                  <ul class="list-unstyled d-flex align-items-center mb-0">
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="me-1" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
-                    <li><a class="" href="javascript:void(0)"><i class="ti ti-star text-warning"></i></a></li>
+                  <ul class="list-unstyled d-flex align-items-center mb-0">     
                   </ul>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        
+            
           {{-- </div>
           <div class="col-sm-6 col-xl-3">
             <div class="card overflow-hidden rounded-2">
