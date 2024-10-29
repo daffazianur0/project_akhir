@@ -10,7 +10,8 @@
         </div>
       </div>
       <!-- Sidebar navigation-->
-      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="
+      ">
         <ul id="sidebarnav">
           <li class="nav-small-cap">
             <i class="ti ti-home nav-small-cap-icon fs-4"></i>
@@ -30,7 +31,7 @@
                 <i class="ti ti-wallet"></i>
               </span>
               <span class="hide-menu">Rekening pembayaran
-                retribusi</span>
+                <p>retribusi</p></span>
             </a>
 
           </li>
@@ -98,3 +99,4 @@
     </div>
     <!-- End Sidebar scroll-->
   </aside>
+
