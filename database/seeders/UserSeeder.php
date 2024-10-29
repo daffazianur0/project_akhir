@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Support\Str;
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -20,6 +20,13 @@ class UserSeeder extends Seeder
             'level' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('12345'),
+            'remember_token' => Str::random(60),
+        ]);
+        User::create([
+            'name' => 'Wajib Retribusi',
+            'level' => 'karyawan',
+            'email' => 'karyawan@gmail.com',
+            'password' => bcrypt('karyawan123'),
             'remember_token' => Str::random(60),
         ]);
     }

@@ -18,9 +18,7 @@ route::get('/logout',[LoginController::class,'logout'])->name('logout');
 
 Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
     route::get('/home',[HomeController::class,'index'])->name('home');
+    route::get('/profil',[HomeController::class,'profil'])->name('profil');
 });
 
-Route::group(['middleware' => ['auth','ceklevel:karyawan']], function () {
-
-});
 
