@@ -26,7 +26,7 @@
             </a>
 
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('rekening.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-wallet"></i>
               </span>
