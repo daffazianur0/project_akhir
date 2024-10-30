@@ -12,7 +12,7 @@ class RekeningController extends Controller
      */
     public function index()
     {
-        return view('Admin.rekening');
+        return view ('Admin.rekening');
     }
 
     /**
@@ -20,7 +20,7 @@ class RekeningController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
