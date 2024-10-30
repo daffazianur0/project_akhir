@@ -10,7 +10,8 @@
           </div>
         </div>
       <!-- Sidebar navigation-->
-      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="
+      ">
         <ul id="sidebarnav">
             @if (auth()->user()->level == "admin")
           {{-- <li class="nav-small-cap">
@@ -26,17 +27,17 @@
             </a>
 
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('rekening.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-wallet"></i>
               </span>
               <span class="hide-menu">Rekening pembayaran
-               <p> retribusi</p></span>
+                <p>retribusi</p></span>
             </a>
 
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('kategori.index')}}" aria-expanded="false">
               <span>
                 <i class="ti ti-category"></i>
               </span>
@@ -44,7 +45,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('wajib.index')}}" aria-expanded="false">
               <span>
                 <i class="ti ti-cards"></i>
               </span>
@@ -68,7 +69,7 @@
             </a>
           </li>
           <li class="nav-small-cap">
-            <i class="ti ti-report"></i>
+            <i class="ti ti-star"></i>
             <span class="hide-menu">laporan</span>
 
           <li class="sidebar-item">
@@ -83,29 +84,26 @@
                   <span>
                     <i class="ti ti-mood-angry"></i>
                   </span>
-                  <span class="hide-menu">belum membayar retribusi</span>
+                  <span class="hide-menu">belum membayar
+                    <p>retribusi</p></span>
                 </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('logout')}}" aria-expanded="false">
                 <span>
-                  <i class="ti ti-logout"></i>
-                </span>
-                <span class="hide-menu">Logout</span>
-              </a>
-            </li>
+
             @endif
             @if (auth()->user()->level == "karyawan")
           <li class="nav-small-cap">
             <i class="ti ti-home nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">profil</span>
+            <span class="hide-menu">karyawan</span>
           </li>
           <li class="sidebar-item">
             <a class="sidebar-link" href="./index.html" aria-expanded="false">
               <span>
-                <i class="ti ti-home"></i>
+                <i class="ti ti-user"></i>
               </span>
-              <span class="hide-menu">kategori retribusi</span>
+              <span class="hide-menu">profil</span>
             </a>
           <li class="sidebar-item">
             <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
@@ -119,7 +117,7 @@
           <li class="sidebar-item">
             <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
               <span>
-                <i class="ti ti-category"></i>
+                <i class="ti ti-ship"></i>
               </span>
               <span class="hide-menu">Kapalku</span>
             </a>
@@ -129,7 +127,8 @@
               <span>
                 <i class="ti ti-cards"></i>
               </span>
-              <span class="hide-menu">kapal Wajib retribusi</span>
+              <span class="hide-menu">kapal Wajib
+                <p> retribusi</p></span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -138,7 +137,7 @@
                 <i class="ti ti-file-description"></i>
               </span>
               <span class="hide-menu">konfirmasi pembayaran
-                    retribusi</span>
+                   <p> retribusi</p></span>
             </a>
           <li class="nav-small-cap">
             <i class="ti ti-report"></i>
@@ -179,3 +178,4 @@
     </div>
     <!-- End Sidebar scroll-->
   </aside>
+
