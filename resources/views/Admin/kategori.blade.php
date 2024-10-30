@@ -42,18 +42,15 @@
                                     <thead class="table-light">
                                         <tr>
                                         <th style="width: 50px;">No.</th>
-                                            <th>Jenis Bank</th>
-                                            <th>Nama Pemilik</th>
-                                            <th>Nomor Rekening</th>
-                                            <th style="width: 150px;">Aksi</th>
+                                          <th>kategori retribusi</th>
+                                             <th style="width: 150px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Bank XYZ</td>
-                                            <td>Nama Pemilik</td>
-                                            <td>1234567890</td>
+                                            <td>kategori retribusi 1</td>
+
                                             <td>
                                                 <button class="btn btn-primary btn-sm">Ubah</button>
                                                 <button class="btn btn-danger btn-sm">Hapus</button>
