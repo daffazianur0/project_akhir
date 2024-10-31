@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 	@include('Template.head')
-  	<title>Login 08</title>
+  	<title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -17,7 +17,7 @@
 		  width: 400%;
 		  height: 400%;
 		  border-radius: 50%;
-		  object-fit: cover;  
+		  object-fit: cover;
 		}
 	  </style>
 

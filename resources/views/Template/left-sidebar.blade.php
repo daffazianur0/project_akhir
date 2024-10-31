@@ -3,7 +3,7 @@
     <div>
         <div class="brand-logo d-flex align-items-center justify-content-between">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="{{ asset('Modernnize/src/assets/images/logos/dark-logo.svg')}}" width="180" alt="" />
+            <img src="{{ asset('Modernnize/src/assets/images/logos/logo.png')}}" width="180" alt="" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
@@ -19,7 +19,7 @@
             <span class="hide-menu">Home</span>
           </li> --}}
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./index.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('home')}}" aria-expanded="false">
               <span>
                 <i class="ti ti-home"></i>
               </span>
@@ -157,21 +157,9 @@
                   </span>
                   <span class="hide-menu">belum membayar retribusi</span>
                 </a> --}}
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="{{ route('logout')}}" aria-expanded="false">
-                <span>
-                  <i class="ti ti-logout"></i>
-                </span>
-                <span class="hide-menu">Logout</span>
-              </a>
-            </li>
+            
             @endif
-        </ul>
-            <div class="unlimited-access-img">
-              <img src="{{ asset('Modernnize/src/assets/images/backgrounds/rocket.png')}}" alt="" class="img-fluid">
-            </div>
-          </div>
+
         </div>
       </nav>
       <!-- End Sidebar navigation -->
