@@ -24,17 +24,7 @@
 
             <div class="container-fluid">
                 <!-- Row 1 -->
-                <div class="row">
-                    <div class="col-lg-100 d-flex align-items-stretch">
-                        <div class="card w-100">
-                            <div class="card-body">
-                                <div class="d-sm-flex d-block align-items-center justify-content-between mb-10">
-                                    <div class="mb-4 mb-sm-0">
-                                        <h5 class="card-title fw-semibold">Dashboard</h5>
-                                    </div>
-                                </div>
-                            </div>
-
+             
                             <div class="row">
                                 <!-- Card 1 -->
                                 <div class="col-sm-6 col-xl-4">
@@ -42,7 +32,7 @@
                                         <div class="card-body pt-3 p-4">
                                             <h6 class="fw-semibold fs-4">Jumlah Sudah Bayar</h6>
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="fw-semibold fs-4 mb-0">$50 <span class="ms-2 fw-normal text-muted fs-3"><del>$65</del></span></h6>
+                                                <h6 class="fw-semibold fs-4 mb-0">0 <span class="ms-2 fw-normal text-muted fs-3"><del></del></span></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -54,7 +44,7 @@
                                         <div class="card-body pt-3 p-4">
                                             <h6 class="fw-semibold fs-4">Jumlah Belum Bayar</h6>
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="fw-semibold fs-4 mb-0">$650 <span class="ms-2 fw-normal text-muted fs-3"><del>$900</del></span></h6>
+                                                <h6 class="fw-semibold fs-4 mb-0">650 <span class="ms-2 fw-normal text-muted fs-3"><del>0</del></span></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -66,7 +56,7 @@
                                         <div class="card-body pt-3 p-4">
                                             <h6 class="fw-semibold fs-4">Jumlah Pemasukan</h6>
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="fw-semibold fs-4 mb-0">$150 <span class="ms-2 fw-normal text-muted fs-3"><del>$200</del></span></h6>
+                                                <h6 class="fw-semibold fs-4 mb-0">$150 <span class="ms-2 fw-normal text-muted fs-3"><del></del></span></h6>
                                             </div>
                                         </div>
                                     </div>

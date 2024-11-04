@@ -94,10 +94,7 @@
 
             @endif
             @if (auth()->user()->level == "karyawan")
-          <li class="nav-small-cap">
-            <i class="ti ti-home nav-small-cap-icon fs-4"></i>
-            <span class="hide-menu">karyawan</span>
-          </li>
+          
           <li class="sidebar-item">
             <a class="sidebar-link" href="./index.html" aria-expanded="false">
               <span>
@@ -157,7 +154,7 @@
                   </span>
                   <span class="hide-menu">belum membayar retribusi</span>
                 </a> --}}
-            
+
             @endif
 
         </div>

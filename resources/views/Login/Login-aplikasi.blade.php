@@ -43,7 +43,7 @@
 	              <input type="password" class="form-control rounded-left" placeholder="Password" name="password" required>
 	            </div>
 								<div class="w-50 text-md-right">
-									<a href="#">Lupa Password</a>
+									<a href="{{ route('password.email')}}">Lupa Password</a>
 								</div>
 	            </div>
 	            <div class="form-group">
