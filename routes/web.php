@@ -119,6 +119,7 @@ Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
     route::resource('kapalku',KapalWajibController::class);
     route::resource('pembayaran',PembayaranController::class);
     route::resource('profile',ProfileController::class);
+    route::get('/profil',[ProfileController::class,'profil'])->name('profil');
     route::resource('kategori',KategoriController::class);
     route::resource('kapalku1',Kapalku1Controller::class);
     route::resource('kapalRetribusi',KapalRetribusiController::class);

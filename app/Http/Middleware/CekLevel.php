@@ -4,22 +4,20 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class CekLevel
 {
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Closure  $next
-     * @return mixed
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle($request, Closure $next, ...$levels)
+    public function handle(Request $request, Closure $next, ...$levels): Response
     {
-        if (Auth::check() && in_array(Auth::user()->level, $levels)) {
+        if ($request->user() && in_array($request->user()->level, $levels)) {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/login');
     }
 }

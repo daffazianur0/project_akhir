@@ -15,8 +15,14 @@ class LoginController extends Controller
 
 
     public function postlogin(Request $request){
-        if(Auth::attempt($request->only('email','password'))){
-            return redirect('/home');
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->level == 'admin') {
+                return redirect()->route('home');
+            } elseif ($user->level == 'karyawan') {
+                return redirect()->route('profil');
+            }
         }
         return redirect('/');
     }

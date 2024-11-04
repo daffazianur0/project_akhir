@@ -24,7 +24,7 @@
 
             <div class="container-fluid">
                 <!-- Row 1 -->
-             
+
                             <div class="row">
                                 <!-- Card 1 -->
                                 <div class="col-sm-6 col-xl-4">
@@ -44,7 +44,7 @@
                                         <div class="card-body pt-3 p-4">
                                             <h6 class="fw-semibold fs-4">Jumlah Belum Bayar</h6>
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="fw-semibold fs-4 mb-0">650 <span class="ms-2 fw-normal text-muted fs-3"><del>0</del></span></h6>
+                                                <h6 class="fw-semibold fs-4 mb-0">650 <span class="ms-2 fw-normal text-muted fs-3"><del></del></span></h6>
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                         <div class="card-body pt-3 p-4">
                                             <h6 class="fw-semibold fs-4">Jumlah Pemasukan</h6>
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <h6 class="fw-semibold fs-4 mb-0">$150 <span class="ms-2 fw-normal text-muted fs-3"><del></del></span></h6>
+                                                <h6 class="fw-semibold fs-4 mb-0">150 <span class="ms-2 fw-normal text-muted fs-3"><del></del></span></h6>
                                             </div>
                                         </div>
                                     </div>
