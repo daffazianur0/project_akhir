@@ -99,14 +99,14 @@
             <span class="hide-menu">karyawan</span>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./index.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('profile.index')}}" aria-expanded="false">
               <span>
                 <i class="ti ti-user"></i>
               </span>
               <span class="hide-menu">profil</span>
             </a>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-buttons.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('kategori.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-wallet"></i>
               </span>
@@ -115,7 +115,7 @@
 
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-alerts.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('kapalku1.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-ship"></i>
               </span>
@@ -123,7 +123,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('kapalRetribusi.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-cards"></i>
               </span>
@@ -132,7 +132,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('KonfirmasiPembayran.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-file-description"></i>
               </span>
