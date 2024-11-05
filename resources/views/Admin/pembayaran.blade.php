@@ -23,7 +23,54 @@
             </header>
             <!-- Header End -->
 
-           <h1>daffa</h1>
+            <div class="container-fluid">
+                <!-- Row 1 -->
+                <div class="row">
+                    <div class="col-lg-100 d-flex align-items-stretch">
+                        <div class="card w-100">
+
+                            <div class="table-container">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <button class="btn btn-primary btn-add">Tambah Data</button>
+                                    <div class="input-group" style="width: 200px;">
+                                        <span class="input-group-text">Search:</span>
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </div>
+                                </div>
+
+                                <table class="table table-bordered mt-3">
+                                    <thead class="table-light">
+                                        <tr>
+                                        <th style="width: 50px;">No.</th>
+                                            <th>nama lengkap</th>
+                                            <th>rekening</th>
+                                            <th>bukti</th>
+                                            <th>tanggal bayar</th>
+                                            <th>tanggal tindak  lanjut</th>
+                                            <th>tindak lanjut user</th>
+                                            <th style="width: 150px;">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>alip aja</td>
+                                            <td>4363112</td>
+                                            <td>foto belum ada</td>
+                                            <td>52631234</td>
+                                            <td>10-02-2024</td>
+                                            <td>admin</td>
+
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">Ubah</button>
+                                                <button class="btn btn-danger btn-sm">Hapus</button>
+                                            </td>
+                                        </tr>
+                                        <!-- Repeat rows as needed -->
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div> <!-- End Card -->
                     </div> <!-- End Column -->
                 </div> <!-- End Row 1 -->

@@ -24,7 +24,7 @@
             <!-- Header End -->
 
             <div class="container-fluid">
-    
+
                 <div class="row">
                     <div class="col-lg-100 d-flex align-items-stretch">
                         <div class="card w-100">
@@ -60,7 +60,7 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" value="arulrf_" readonly>
+                                            <input type="text" class="form-control" id="username" value="namaku" readonly>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="hakAkses">Hak Akses</label>
@@ -75,7 +75,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="namaLengkap">Nama Lengkap</label>
-                                            <input type="text" class="form-control" id="namaLengkap" value="Arul Rachman Faruqhy" readonly>
+                                            <input type="text" class="form-control" id="namaLengkap" value="namaku" readonly>
                                         </div>
                                     </div>
 
@@ -86,7 +86,7 @@
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="alamat">Alamat</label>
-                                            <input type="text" class="form-control" id="alamat" value="Ds. Kemantren" readonly>
+                                            <input type="text" class="form-control" id="alamat" value="Ds. cikaso" readonly>
                                         </div>
                                     </div>
 

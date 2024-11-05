@@ -24,7 +24,7 @@
             <!-- Header End -->
 
             <div class="container-fluid">
-
+                <!-- Row 1 -->
                 <div class="row">
                     <div class="col-lg-100 d-flex align-items-stretch">
                         <div class="card w-100">
@@ -42,14 +42,16 @@
                                     <thead class="table-light">
                                         <tr>
                                         <th style="width: 50px;">No.</th>
-                                          <th>kategori retribusi</th>
-                                             <th style="width: 150px;">Aksi</th>
+                                            <th><center>kategori retribusi</center></th>
+
+                                            <th style="width: 150px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>kategori retribusi 1</td>
+                                            <td><center>kategori 1<center></td>
+
 
                                             <td>
                                                 <button class="btn btn-primary btn-sm">Ubah</button>

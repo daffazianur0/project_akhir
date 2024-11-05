@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class kategoriretribusiController extends Controller
      */
     public function index()
     {
-        return view('Admin.kategori');
+        return view('User.kategori');
     }
 
     /**
