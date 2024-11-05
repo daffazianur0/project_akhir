@@ -28,47 +28,33 @@
                     <div class="col-lg-100 d-flex align-items-stretch">
                         <div class="card w-100">
 
-                                <!DOCTYPE html>
-                                <html lang="en">
-                                <head>
-                                    <meta charset="UTF-8">
-                                    <meta http-equiv="X-UA-Compatible="IE=edge">
-                                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                    <title>Table Interface</title>
-                                    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-                                </head>
-                                <body style="background-color: #e0e0e0;">
-                                    <div class="container mt-5">
-                                        <div class="p-3 bg-white rounded shadow-sm">
-                                            <div class="d-flex justify-content-between align-items-center mb-3">
-                                                <div></div> <!-- Placeholder for potential left-side content -->
-                                                <div class="d-flex align-items-center">
-                                                    <label for="search" class="me-2">Search:</label>
-                                                    <input type="text" id="search" class="form-control" style="width: 200px;">
-                                                </div>
-                                            </div>
-                                            <table class="table table-bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>No.</th>
-                                                        <th>Nama Kapal</th>
-                                                        <th>Nilai Retribusi</th>
-                                                        <th>Tanggal Pembayaran</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td>1.</td>
-                                                        <td>Sangkuriang</td>
-                                                        <td>Rp. 1.000.000,00</td>
-                                                        <td>15 Oktober 2024</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+                            <div class="container my-4 container-custom">
+                                <div class="d-flex justify-content-between mb-3">
+                                    <button class="btn btn-primary btn-custom">Tambah Data</button>
+                                    <div class="form-inline">
+                                        <label for="search" class="mr-2">Search:</label>
+                                        <input type="text" class="form-control" id="search" placeholder="Type to search...">
                                     </div>
-                                </body>
-                                </html>
+                                </div>
+                                <table class="table table-bordered">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Kategori Retribusi</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1.</td>
+                                            <td>Kategori Retribusi 1</td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary">Ubah</button>
+                                                <button class="btn btn-sm btn-danger">Hapus</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table> 
                             
 
                             
