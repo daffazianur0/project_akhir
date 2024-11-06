@@ -60,33 +60,33 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" value="namaku" readonly>
+                                            <input type="text" class="form-control" id="username" value="namaku" >
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="hakAkses">Hak Akses</label>
-                                            <input type="text" class="form-control" id="hakAkses" value="Administrator" readonly>
+                                            <input type="text" class="form-control" id="hakAkses" value="Administrator" >
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="nik">NIK</label>
-                                            <input type="text" class="form-control" id="nik" value="3674938217278893" readonly>
+                                            <input type="text" class="form-control" id="nik" value="3674938217278893" >
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="namaLengkap">Nama Lengkap</label>
-                                            <input type="text" class="form-control" id="namaLengkap" value="namaku" readonly>
+                                            <input type="text" class="form-control" id="namaLengkap" value="namaku">
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="telepon">Telepon</label>
-                                            <input type="text" class="form-control" id="telepon" value="081234567890" readonly>
+                                            <input type="text" class="form-control" id="telepon" value="081234567890" >
                                         </div>
                                         <div class="form-group col-md-6">
-                                            <label for="alamat">Alamat</label>
-                                            <input type="text" class="form-control" id="alamat" value="Ds. cikaso" readonly>
+                                            <label for="alamat">Alamat </label>
+                                            <input type="text" class="form-control" id="alamat" value="Ds. cikaso" >
                                         </div>
                                     </div>
 

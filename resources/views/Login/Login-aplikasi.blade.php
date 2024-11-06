@@ -33,7 +33,7 @@
 		      	<div class="icon d-flex align-items-center justify-content-center">
 					<img src="{{ asset('images/logo-icon.jpg') }}" alt="Login Icon" style="width: 50px; height: 50px;">
 		      	</div>
-		      	<h3 class="text-center mb-4">LOGIN SIREBON</h3>
+		      	<h3 class="text-center mb-4">LOGIN SIREPAL</h3>
 						<form action="{{ route('postlogin')}}" method="post" class="login-form">
                             @csrf
 		      		<div class="form-group">
