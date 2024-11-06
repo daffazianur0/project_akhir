@@ -24,66 +24,40 @@
             <!-- Header End -->
 
             <div class="container-fluid">
-    
+                <!-- Row 1 -->
                 <div class="row">
                     <div class="col-lg-100 d-flex align-items-stretch">
                         <div class="card w-100">
 
-                            <!DOCTYPE html>
-                            <html lang="en">
-                            <head>
-                                <meta charset="UTF-8">
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title>Tabel Kategori Retribusi</title>
-                                <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-                                <style>
-                                    .table-container {
-                                        max-width: 800px;
-                                        margin: 20px auto;
-                                        padding: 20px;
-                                        border: 1px solid #ccc;
-                                        border-radius: 8px;
-                                        background-color: #f8f9fa;
-                                    }
-                                    .search-container {
-                                        text-align: right;
-                                        margin-bottom: 10px;
-                                    }
-                                    .form-control {
-                                        width: 200px;
-                                        background-color: #e2edf7;
-                                    }
-                                </style>
-                            </head>
-                            <body>
-                            
                             <div class="table-container">
-                                <div class="search-container">
-                                    <label for="search">Search:</label>
-                                    <input type="text" id="search" class="form-control">
+                                <div class="d-flex justify-content-between align-items-center">
+
+                                    <div class="input-group" style="width: 200px;">
+                                        <span class="input-group-text">Search:</span>
+                                        <input type="text" class="form-control" placeholder="Search">
+                                    </div>
                                 </div>
-                            
-                                <table class="table table-bordered">
-                                    <thead>
+
+                                <table class="table table-bordered mt-3">
+                                    <thead class="table-light">
                                         <tr>
-                                            <th style="width: 10%;">No.</th>
-                                            <th>Kategori Retribusi</th>
+                                        <th style="width: 50px;">No.</th>
+                                            <th><center>kategori retribusi</center></th>
+
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1.</td>
-                                            <td>Kategori Retribusi 1</td>
+                                            <td>1</td>
+                                            <td><center>kategori retribusi</center></td>
+
+
+
                                         </tr>
+                                        <!-- Repeat rows as needed -->
                                     </tbody>
                                 </table>
                             </div>
-                            
-                            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-                            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-                            </body>
-                            </html>
-                            
 
                         </div> <!-- End Card -->
                     </div> <!-- End Column -->

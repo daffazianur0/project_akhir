@@ -23,6 +23,18 @@ hr { margin: 1rem 0; color: inherit; border: 0; border-top: var(--bs-border-widt
 @media (min-width:1200px) {
   .h2,h2 { font-size: 1.75rem }
 }
+
+@media (max-width: 768px) {
+    .left-sidebar {
+        width: 100%;
+        position: relative;
+    }
+    .body-wrapper {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
 .h3,h3 { font-size: calc(1.278125rem + 0.3375vw) }
 @media (min-width:1200px) {
   .h3,h3 { font-size: 1.53125rem }
@@ -3848,9 +3860,16 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + calc(var(--bs-border-
 @media (max-width:991.98px) {
   .w-xs-100 { width: 100%!important }
 }
-.page-wrapper { position: relative; display: flex;}
-.body-wrapper { position: relative; margin-left: 250px;
-    padding: 20px; }
+.page-wrapper {
+    display: flex;
+}
+
+.body-wrapper {
+    margin-left: 250px; /* Sesuaikan dengan lebar sidebar */
+    width: calc(100% - 250px); /* Sesuaikan dengan lebar sidebar */
+    padding: 20px; /* Opsional, untuk memberi jarak di dalam konten */
+}
+
 .body-wrapper>.container-fluid,.body-wrapper>.container-lg,.body-wrapper>.container-md,.body-wrapper>.container-sm,.body-wrapper>.container-xl,.body-wrapper>.container-xxl { max-width: 1200px; margin: 0 auto; padding: 24px; -webkit-transition: 0.2s ease-in; transition: 0.2s ease-in }
 @media (max-width:767.98px) {
   .body-wrapper>.container-fluid,.body-wrapper>.container-lg,.body-wrapper>.container-md,.body-wrapper>.container-sm,.body-wrapper>.container-xl,.body-wrapper>.container-xxl { padding: 30px 20px }
@@ -3861,7 +3880,11 @@ textarea.form-control-lg { min-height: calc(1.5em + 1rem + calc(var(--bs-border-
     top: 0;
     bottom: 0;
     left: 0;
-    overflow-y: auto; }
+    overflow-y: auto;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1000; }
 #main-wrapper[data-layout=vertical][data-header-position=fixed] .app-header { position: fixed; z-index: 10 }
 #main-wrapper[data-layout=vertical][data-header-position=fixed] .body-wrapper>.container-fluid,#main-wrapper[data-layout=vertical][data-header-position=fixed] .body-wrapper>.container-lg,#main-wrapper[data-layout=vertical][data-header-position=fixed] .body-wrapper>.container-md,#main-wrapper[data-layout=vertical][data-header-position=fixed] .body-wrapper>.container-sm,#main-wrapper[data-layout=vertical][data-header-position=fixed] .body-wrapper>.container-xl,#main-wrapper[data-layout=vertical][data-header-position=fixed] .body-wrapper>.container-xxl { padding-top: calc(70px + 15px) }
 @media (min-width:1200px) {

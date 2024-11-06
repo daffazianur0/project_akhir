@@ -44,6 +44,7 @@
                                         <div class="card-body pt-3 p-4">
                                             <h6 class="fw-semibold fs-4">Jumlah Belum Bayar</h6>
                                             <div class="d-flex align-items-center justify-content-between">
+                                                
                                                 <h6 class="fw-semibold fs-4 mb-0">650 <span class="ms-2 fw-normal text-muted fs-3"><del></del></span></h6>
                                             </div>
                                         </div>

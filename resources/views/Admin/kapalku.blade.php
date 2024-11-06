@@ -45,6 +45,7 @@
                                             <th>nama Pemilik</th>
                                             <th>Nama kapal</th>
                                             <th>jenis kapal</th>
+                                            <th>ukuran</th>
                                             <th style="width: 150px;">Aksi</th>
                                         </tr>
                                     </thead>
@@ -53,7 +54,8 @@
                                             <td>1</td>
                                             <td>alip</td>
                                             <td>B112</td>
-                                            <td>12345</td>
+                                            <td>sangkuriang</td>
+                                            <td>25 m</td>
                                             <td>
                                                 <button class="btn btn-primary btn-sm">Ubah</button>
                                                 <button class="btn btn-danger btn-sm">Hapus</button>

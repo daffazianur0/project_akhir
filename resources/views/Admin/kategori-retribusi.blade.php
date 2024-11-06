@@ -1,4 +1,4 @@
-
+ 
 <!doctype html>
 <html lang="en">
 
@@ -28,33 +28,33 @@
                 <div class="row">
                     <div class="col-lg-100 d-flex align-items-stretch">
                         <div class="card w-100">
-
-                            <div class="table-container">
-                                <div class="d-flex justify-content-between align-items-center">
-
-                                    <div class="input-group" style="width: 200px;">
-                                        <span class="input-group-text">Search:</span>
-                                        <input type="text" class="form-control" placeholder="Search">
-                                    </div>
-                                </div>
-
+                            <!DOCTYPE html>
+                            <html lang="en">
+                            <head>
+                                <meta charset="UTF-8">
+                                <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                                <title>UI Design</title>
+                                <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
                                 <table class="table table-bordered mt-3">
                                     <thead class="table-light">
                                         <tr>
                                         <th style="width: 50px;">No.</th>
-                                            <th>Nama kapal</th>
-                                            <th>nilai retribusi</th>
-                                            <th>tanggal pembayaran</th>
+                                            <th><center>kategori retribusi</center></th>
 
+                                            <th style="width: 150px;">Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>kapallaut</td>
-                                            <td>rp.1000,000</td>
-                                            <td>22 juli 2024</td>
+                                            <td><center>kategori 1<center></td>
 
+
+                                            <td>
+                                                <button class="btn btn-primary btn-sm">Ubah</button>
+                                                <button class="btn btn-danger btn-sm">Hapus</button>
+                                            </td>
                                         </tr>
                                         <!-- Repeat rows as needed -->
                                     </tbody>

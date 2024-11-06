@@ -67,6 +67,7 @@
               </span>
               <span class="hide-menu">pembayaran retribusi</span>
             </a>
+
           </li>
           <li class="nav-small-cap">
             <i class="ti ti-star"></i>
@@ -103,7 +104,7 @@
               <span class="hide-menu">profil</span>
             </a>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('kategori.index') }}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('kategori-retribusi.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-wallet"></i>
               </span>
