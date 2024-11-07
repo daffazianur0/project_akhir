@@ -43,8 +43,8 @@
                                         <tr>
                                         <th style="width: 50px;">No.</th>
                                             <th><center>Jenis Bank</center></th>
-                                            <th>Nama Pemilik</th>
-                                            <th><center>Nomor Rekening</center></th>
+                                            <th><center>Nama Pemilik</center></th>
+                                            <th>Nomor Rekening</th>
                                             <th style="width: 150px;">Aksi</th>
                                         </tr>
                                     </thead>
