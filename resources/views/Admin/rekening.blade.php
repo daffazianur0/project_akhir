@@ -31,7 +31,7 @@
 
                             <div class="table-container">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <button class="btn btn-primary btn-add">Tambah Data</button>
+                                    <a href="{{ route('rekening.create')}}" class="btn btn-primary btn-add">Tambah Data</a>
                                     <div class="input-group" style="width: 200px;">
                                         <span class="input-group-text">Search:</span>
                                         <input type="text" class="form-control" placeholder="Search">
@@ -49,17 +49,27 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Bank XYZ</td>
-                                            <td>Nama Pemilik</td>
-                                            <td>1234567890</td>
-                                            <td>
-                                                <button class="btn btn-primary btn-sm">Ubah</button>
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                            </td>
-                                        </tr>
-                                        <!-- Repeat rows as needed -->
+                                        @foreach ($rekening as $index => $data)
+                                                <tr>
+                                                    <td scope="col" class="text-center">{{ $index + 1 }}</td>
+                                                    <td scope="col" class="text-center">
+                                                        {{ $data->refBank->nama_bank }}</td>
+                                                    <td scope="col" class="text-center">{{ $data->nama_akun }}</td>
+                                                    <td scope="col" class="text-center">{{ $data->no_rekening }}</td>
+                                                    <td scope="col" class="text-center">
+                                                        <a href="{{ route('rekening.edit', $data->id) }}"
+                                                            class="btn btn-primary btn-sm m-1">Ubah</a>
+
+                                                        <form action="{{ route('rekening.destroy', $data->id) }}"
+                                                            method="POST" style="display:inline;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger btn-sm m-1"
+                                                                onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                     </tbody>
                                 </table>
                             </div>
