@@ -42,9 +42,9 @@
                                     <thead class="table-light">
                                         <tr>
                                         <th style="width: 50px;">No.</th>
-                                            <th>Jenis Bank</th>
+                                            <th><center>Jenis Bank</center></th>
                                             <th>Nama Pemilik</th>
-                                            <th>Nomor Rekening</th>
+                                            <th><center>Nomor Rekening</center></th>
                                             <th style="width: 150px;">Aksi</th>
                                         </tr>
                                     </thead>
