@@ -31,7 +31,7 @@
 
                             <div class="table-container">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="{{ route('rekening.create')}}" class="btn btn-primary btn-add">Tambah Data</a>
+                                    <a href="{{ route('rekening.create')}}"  class="btn btn-primary btn-add">Tambah Data</a>
                                     <div class="input-group" style="width: 200px;">
                                         <span class="input-group-text">Search:</span>
                                         <input type="text" class="form-control" placeholder="Search">
@@ -45,7 +45,7 @@
                                             <th><center>Jenis Bank</center></th>
                                             <th><center>Nama Pemilik</center></th>
                                             <th>Nomor Rekening</th>
-                                            <th style="width: 150px;">Aksi</th>
+                                            <th style="width: 190px;"><center>aksi</center></th>
                                         </tr>
                                     </thead>
                                     <tbody>

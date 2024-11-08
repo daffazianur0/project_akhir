@@ -30,36 +30,49 @@
                         <div class="card w-100">
 
                             <div class="table-container">
+                                @if (auth()->user()->level == 'admin')
                                 <div class="d-flex justify-content-between align-items-center">
+                                    <a href="{{route("kategori.create")}}">
                                     <button class="btn btn-primary btn-add">Tambah Data</button>
                                     <div class="input-group" style="width: 200px;">
                                         <span class="input-group-text">Search:</span>
                                         <input type="text" class="form-control" placeholder="Search">
                                     </div>
                                 </div>
-
+                                @endif
                                 <table class="table table-bordered mt-3">
                                     <thead class="table-light">
                                         <tr>
                                         <th style="width: 50px;">No.</th>
                                             <th>kategori retribusi</th>
 
-
+                                            @if (auth()->user()->level == 'admin')
                                             <th style="width: 150px;">Aksi</th>
+                                            @endif
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>kategori retribusi 1</td>
+                                        @foreach ($kategori as $index => $data)
+                                              <tr>
+                                                  <td scope="col" class="text-center">{{ $index + 1 }}.</td>
 
+                                                  <td scope="col" class="text-center">{{ $data->kategori }}</td>
+                                                  @if (auth()->user()->level == 'admin')
+                                                  <td scope="col" class="text-center">
+                                                      <a href="{{ route('kategori-retribusi.edit', $data->id) }}"
+                                                          class="btn btn-primary btn-sm m-1">Ubah</a>
 
-
-                                            <td>
-                                                <button class="btn btn-primary btn-sm">Ubah</button>
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                            </td>
-                                        </tr>
+                                                      <form action="{{ route('kategori-retribusi.destroy', $data->id) }}"
+                                                          method="POST" style="display:inline;">
+                                                          @csrf
+                                                          @method('DELETE')
+                                                          <button type="submit" class="btn btn-danger btn-sm m-1"
+                                                              onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                                                      </form>
+                                                  </td>
+                                                  @endif
+                                              </tr>
+                                          @endforeach
                                         <!-- Repeat rows as needed -->
                                     </tbody>
                                 </table>
