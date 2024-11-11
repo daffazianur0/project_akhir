@@ -34,9 +34,11 @@ class KategoriController extends Controller
             'kategori' => 'required|string|max:50',
         ]);
 
-        Kategori::create($request->all());
+        kategori::create([
+            'kategori' => $request->kategori,
+        ]);
 
-        return redirect()->route('kategori-retribusi.index')->with('success', 'Data kategori berhasil ditambahkan.');
+        return redirect()->route('kategori.index')->with('success', 'Data kategori berhasil ditambahkan.');
     }
 
     /**
@@ -52,7 +54,9 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
-        // Implementasi untuk menampilkan form edit
+
+            $kategori = Kategori::findOrFail($id);
+            return view('Admin.Kategori.edit', compact('kategori'));
     }
 
     /**
@@ -60,7 +64,14 @@ class KategoriController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        // Implementasi untuk mengupdate data tertentu
+        $request->validate([
+            'kategori' => 'required|string|max:50',
+        ]);
+
+        $kategori = Kategori::findOrFail($id);
+        $kategori->update($request->all());
+
+        return redirect()->route('kategori.index')->with('success', 'Data rekening berhasil ditambahkan.');
     }
 
     /**
@@ -68,6 +79,8 @@ class KategoriController extends Controller
      */
     public function destroy(string $id)
     {
-        // Implementasi untuk menghapus data tertentu
+        $kategori = Kategori::findOrFail($id);
+        $kategori->delete();
+        return redirect()->route('kategori.index')->with('success', 'Data kategori berhasil dihapus.');
     }
 }

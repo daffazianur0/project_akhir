@@ -26,28 +26,6 @@
                         </a>
                     </li>
                 </ul>
-                {{-- <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
-                    <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-                        <li class="nav-item">
-                            <span class="nav-link me-2 fs-5">{{ auth()->user()->name }}</span>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="{{ asset('modernnize/src/assets/images/profile/user-1.jpg') }}" alt=""
-                                    width="35" height="35" class="rounded-circle">
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
-                                aria-labelledby="drop2">
-                                <div class="message-body">
-
-                                    <a href="{{ route('logout') }}"
-                                        class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div> --}}
             </nav>
 
         </header>
@@ -59,36 +37,21 @@
                 <div class="col">
                     <div class="card profile-card">
                         <div class="card-body">
-                            <h5 class="card-title">Tambah Rekening Pembayaran</h5>
+                            <h5 class="card-title">ubah kategori </h5>
                             <hr>
-                            <form action="{{ route('rekening.update', $rekening->id) }}" method="POST">
+                            <form action="{{ route('kategori.update', $kategori->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label" for="id_ref_bank">Bank</label>
+                                    <label class="col-sm-3 col-form-label">Kategori Retribusi</label>
                                     <div class="col-sm-9">
-                                        <select name="id_ref_bank" id="id_ref_bank" class="form-select">
-                                            @foreach ($refBanks as $bank)
-                                                <option value="{{ $bank->id }}" {{ $bank->id == $rekening->id_ref_bank ? 'selected' : '' }}>
-                                                    {{ $bank->nama_bank }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label">Nama Akun</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="nama_akun" class="form-control" value="{{$rekening->nama_akun}}">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label">Nomor Rekening</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="no_rekening" class="form-control"value="{{$rekening->no_rekening}}">
+                                        <input type="text" name="kategori" class="form-control" value="{{ $kategori->kategori }}">
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-4">Simpan</button>
+                                        </select>
+                                    </div>
+                             
                         </div>
                     </div>
                 </div>

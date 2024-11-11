@@ -9,7 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PresensiController;
 use App\Http\Controllers\Admin\RekeningController;
-use App\Http\Controllers\Admin\kategoriretribusiController;
+use App\Http\Controllers\User\kategoriretribusiController;
 use App\Http\Controllers\Admin\WajibController;
 use App\Http\Controllers\Admin\KapalWajibController;
 use App\Http\Controllers\Admin\PembayaranController;

@@ -34,7 +34,7 @@
                                 <div class="d-flex justify-content-between align-items-center">
                                     <a href="{{route("kategori.create")}}">
                                     <button class="btn btn-primary btn-add">Tambah Data</button>
-                                    <div class="input-group" style="width: 200px;">
+                                    <div class="input-group" style="left: 675px;">
                                         <span class="input-group-text">Search:</span>
                                         <input type="text" class="form-control" placeholder="Search">
                                     </div>
@@ -44,10 +44,10 @@
                                     <thead class="table-light">
                                         <tr>
                                         <th style="width: 50px;">No.</th>
-                                            <th>kategori retribusi</th>
+                                            <th><center>kategori retribusi</center></th>
 
                                             @if (auth()->user()->level == 'admin')
-                                            <th style="width: 150px;">Aksi</th>
+                                            <th style="width: 200px;">Aksi</th>
                                             @endif
                                         </tr>
                                     </thead>
@@ -59,10 +59,10 @@
                                                   <td scope="col" class="text-center">{{ $data->kategori }}</td>
                                                   @if (auth()->user()->level == 'admin')
                                                   <td scope="col" class="text-center">
-                                                      <a href="{{ route('kategori-retribusi.edit', $data->id) }}"
+                                                      <a href="{{ route('kategori.edit', $data->id) }}"
                                                           class="btn btn-primary btn-sm m-1">Ubah</a>
 
-                                                      <form action="{{ route('kategori-retribusi.destroy', $data->id) }}"
+                                                      <form action="{{ route('kategori.destroy', $data->id) }}"
                                                           method="POST" style="display:inline;">
                                                           @csrf
                                                           @method('DELETE')
