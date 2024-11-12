@@ -97,7 +97,7 @@
             @if (auth()->user()->level == "karyawan")
 
           <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('profil')}}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('profil.index')}}" aria-expanded="false">
               <span>
                 <i class="ti ti-user"></i>
               </span>

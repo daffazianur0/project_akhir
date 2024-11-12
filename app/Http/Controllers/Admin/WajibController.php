@@ -20,7 +20,9 @@ class WajibController extends Controller
      */
     public function create()
     {
-        //
+        $kelurahan = Kelurahan::all();
+        $user = User::all();
+        return view('Admin.Wajib-Retribusi.create', compact('kelurahan','user'));
     }
 
     /**

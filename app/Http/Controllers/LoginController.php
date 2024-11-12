@@ -21,7 +21,7 @@ class LoginController extends Controller
             if ($user->level == 'admin') {
                 return redirect()->route('home');
             } elseif ($user->level == 'karyawan') {
-                return redirect()->route('profil');
+                return redirect()->route('profil.index');
             }
         }
         return redirect('/');

@@ -56,39 +56,46 @@
                             <body>
 
                             <div class="form-container">
-                                <form>
+                                <form method="POST" action="{{ route('profil.update', ['profil' => Auth::user()->id])}}">
+                                    @csrf
+                                    @method('PUT')
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" value="namaku">
+                                            <input type="text" class="form-control" name="username" id="Username" value="{{ auth()->user()->name }}">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="hakAkses">Hak Akses</label>
-                                            <input type="text" class="form-control" id="hakAkses" value="Administrator">
+                                            <input type="text" class="form-control" name="hakAkses" id="hakAkses" value="{{ auth()->user()->name }}" readonly>
                                         </div>
                                     </div>
-
+                                    @foreach (auth()->user()->wajibRetribusi as $wajib)
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="nik">NIK</label>
-                                            <input type="text" class="form-control" id="nik" value="3674938217278893">
+                                            <input type="text" class="form-control" name="nik" id="Nik" value="{{ $wajib->nik }}">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="namaLengkap">Nama Lengkap</label>
-                                            <input type="text" class="form-control" id="namaLengkap" value="namaku" >
+                                            <input type="text" class="form-control" name="namaLengkap" id="Nama Lengkap" value="{{ $wajib->nama }}" >
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
                                             <label for="telepon">Telepon</label>
-                                            <input type="text" class="form-control" id="telepon" value="081234567890">
+                                            <input type="text" class="form-control" name="telepon" id="telepon" value="{{ $wajib->no_hp }}">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="alamat">Alamat</label>
-                                            <input type="text" class="form-control" id="alamat" value="Ds. cikaso">
+                                            <input type="text" class="form-control" name="alamat" id="alamat" value="{{ $wajib->alamat }}">
                                         </div>
                                     </div>
+                                    @endforeach
+                                    <button type="submit" class="btn btn-primary btn-block">Simpan</button>
+                                </form>
+
+                                <form>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
