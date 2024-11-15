@@ -105,7 +105,7 @@ Route::post('/reset-password', function (Request $request) {
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('/Login.Login-aplikasi');
 });
 
 

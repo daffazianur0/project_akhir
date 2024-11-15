@@ -16,7 +16,8 @@ class wajibRetribusi extends Model
         'no_hp',
         'nik',
         'alamat',
-        'kelurahan',
+        'id_kelurahan',
+        'status'
     ];
 
 
@@ -24,4 +25,8 @@ class wajibRetribusi extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
 }
+    public function kelurahan()
+    {
+        return $this->belongsTo(Kelurahan::class, 'id_kelurahan');
+    }
 }

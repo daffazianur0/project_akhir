@@ -23,26 +23,27 @@
             </header>
             <!-- Header End -->
 
-            <div class="container-fluid">
-                <!-- Row 1 -->
-                <div class="row">
-                    <div class="col-lg-100 d-flex align-items-stretch">
-                        <div class="card w-100">
+            <div class="container">
+                <div class="page-inner">
+                  <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+                  </div>
+                  <div class="col">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">kategori Retribusi</h5>
+                        <hr>
+                        <div class="d-flex justify-content-between mb-2">
+                            @if (auth()->user()->level == 'admin')
 
-                            <div class="table-container">
-                                @if (auth()->user()->level == 'admin')
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="{{route("kategori.create")}}">
-                                    <button class="btn btn-primary btn-add">Tambah Data</button>
-                                    <div class="input-group" style="left: 675px;">
-                                        <span class="input-group-text">Search:</span>
-                                        <input type="text" class="form-control" placeholder="Search">
-                                    </div>
+                          <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Data</a>
+                          <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari...">
+                        </div>
                                 </div>
                                 @endif
-                                <table class="table table-bordered mt-3">
-                                    <thead class="table-light">
-                                        <tr>
+                                <table class="table table-bordered mt-2">
+                                    <tr class="border-2 border-bottom border-primary border-0">
+                                    <thead>
+
                                         <th style="width: 50px;">No.</th>
                                             <th><center>kategori retribusi</center></th>
 

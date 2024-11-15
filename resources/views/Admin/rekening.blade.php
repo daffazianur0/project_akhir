@@ -29,22 +29,29 @@
                     <div class="col-lg-100 d-flex align-items-stretch">
                         <div class="card w-100">
 
-                            <div class="table-container">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <a href="{{ route('rekening.create')}}"  class="btn btn-primary btn-add">Tambah Data</a>
-                                    <div class="input-group" style="width: 200px;">
-                                        <span class="input-group-text">Search:</span>
-                                        <input type="text" class="form-control" placeholder="Search">
-                                    </div>
-                                </div>
-
-                                <table class="table table-bordered mt-3">
-                                    <thead class="table-light">
+                            <div class="container">
+                                <div class="page-inner">
+                                  <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4">
+                                  </div>
+                                  <div class="col">
+                                    <div class="card">
+                                      <div class="card-body">
+                                        <h5 class="card-title">Rekening pembayaran Retribusi</h5>
+                                        <hr>
+                                        <div class="d-flex justify-content-between mb-2">
+                                          <a href="{{ route('rekening.create') }}" class="btn btn-primary">Tambah Data</a>
+                                          <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari...">
+                                        </div>
+                                        <div class="table-responsive table-bordered">
+                                          <table class="table text-nowrap align-middle mb-0 table-striped" id="dataTable">
+                                            <thead>
+                                                <div class="table-responsive table-bordered">
                                         <tr>
+                                            <tr class="border-2 border-bottom border-primary border-0">
                                         <th style="width: 50px;">No.</th>
                                             <th><center>Jenis Bank</center></th>
                                             <th><center>Nama Pemilik</center></th>
-                                            <th>Nomor Rekening</th>
+                                            <th><center>Nomor Rekening</center></th>
                                             <th style="width: 190px;"><center>aksi</center></th>
                                         </tr>
                                     </thead>

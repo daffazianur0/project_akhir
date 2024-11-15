@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ms_rekening', function (Blueprint $table) {
+        Schema::create('kelurahan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_ref_bank');
-            $table->string('nama_akun', 50);
-            $table->string('no_rekening', 50);
+            $table->string('nama_kelurahan',50);
             $table->timestamps();
-
-            $table->foreign('id_ref_bank')->references('id')->on('ref_bank')->onDelete('cascade');
         });
     }
 
@@ -27,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ms_rekening');
+        Schema::dropIfExists('kelurahan');
     }
 };

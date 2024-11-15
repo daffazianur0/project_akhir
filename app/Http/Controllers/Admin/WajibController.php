@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Kelurahan;
+use App\Models\User;
+use App\Models\WajibRetribusi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,8 @@ class WajibController extends Controller
      */
     public function index()
     {
-        return view('Admin.wajib');
+        $wajibRetribusi = WajibRetribusi::all();
+        return view('Admin.wajib', compact('wajibRetribusi'));
     }
 
     /**
@@ -22,7 +26,7 @@ class WajibController extends Controller
     {
         $kelurahan = Kelurahan::all();
         $user = User::all();
-        return view('Admin.Wajib-Retribusi.create', compact('kelurahan','user'));
+        return view('Admin.wajib-retribusi.create', compact('kelurahan', 'user'));
     }
 
     /**
@@ -30,15 +34,26 @@ class WajibController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'nama' => 'required|string|max:50',
+            'no_hp' => 'required|string|max:16',
+            'nik' => 'required|string|max:16',
+            'alamat' => 'required|string',
+            'id_kelurahan' => 'required|exists:kelurahan,id',
+            'status' => 'required|in:A,B',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        WajibRetribusi::create([
+            'id_user' => auth()->id(),
+            'nama' => $request->nama,
+            'no_hp' => $request->no_hp,
+            'nik' => $request->nik,
+            'alamat' => $request->alamat,
+            'id_kelurahan' => $request->id_kelurahan,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('wajib.index')->with('success', 'Data rekening berhasil ditambahkan.');
     }
 
     /**
@@ -46,7 +61,9 @@ class WajibController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $wajibretribusi = WajibRetribusi::findOrFail($id);
+        $kelurahan = Kelurahan::all();
+        return view('Admin.wajib-retribusi.edit', compact('wajibretribusi', 'kelurahan'));
     }
 
     /**
@@ -54,7 +71,26 @@ class WajibController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required|string|max:50',
+            'no_hp' => 'required|string|max:16',
+            'nik' => 'required|string|max:16',
+            'alamat' => 'required|string',
+            'id_kelurahan' => 'required|exists:kelurahan,id',
+            'status' => 'required|in:A,B',
+        ]);
+
+        $wajibretribusi = WajibRetribusi::findOrFail($id);
+        $wajibretribusi->update([
+            'nama' => $request->nama,
+            'no_hp' => $request->no_hp,
+            'nik' => $request->nik,
+            'alamat' => $request->alamat,
+            'id_kelurahan' => $request->id_kelurahan,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->route('wajib.index')->with('success', 'Data rekening berhasil diperbarui.');
     }
 
     /**
@@ -62,6 +98,8 @@ class WajibController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $wajibretribusi = WajibRetribusi::findOrFail($id);
+        $wajibretribusi->delete();
+        return redirect()->route('wajib.index')->with('success', 'Data wajib retribusi berhasil dihapus.');
     }
 }

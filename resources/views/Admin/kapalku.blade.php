@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -7,75 +6,89 @@
 </head>
 
 <body>
-    <!-- Body Wrapper -->
+    <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
-
         <!-- Sidebar Start -->
         @include('Template.left-sidebar')
-        <!-- Sidebar End -->
-
-        <!-- Main Wrapper -->
+        <!--  Sidebar End -->
+        <!--  Main wrapper -->
         <div class="body-wrapper">
-            <!-- Header Start -->
+            <!--  Header Start -->
             <header class="app-header">
                 @include('Template.navbar')
             </header>
-            <!-- Header End -->
-
+            <!--  Header End -->
             <div class="container-fluid">
-                <!-- Row 1 -->
                 <div class="row">
-                    <div class="col-lg-100 d-flex align-items-stretch">
-                        <div class="card w-100">
 
-                            <div class="table-container">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <button class="btn btn-primary btn-add">Tambah Data</button>
-                                    <div class="input-group" style="width: 200px;">
-                                        <span class="input-group-text">Search:</span>
-                                        <input type="text" class="form-control" placeholder="Search">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Kapal Wajib Retribusi</h5>
+                                <hr>
+                                @if (auth()->user()->level == 'admin')
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <a href="{{ route('kapalku.create') }}" class="btn btn-primary">Tambah Data</a>
+                                        <input type="text" id="searchInput" class="form-control w-25"
+                                            placeholder="Cari...">
                                     </div>
+                                @endif
+                                <div class="table-responsive table-bordered">
+                                    <table class="table text-nowrap align-middle mb-0 table-striped" id="dataTable">
+                                        <thead>
+                                            <tr class="border-2 border-bottom border-primary border-0">
+                                                <th scope="col" class="text-center">No.</th>
+                                                <th scope="col" class="text-center">Nama Pemilik</th>
+                                                <th scope="col" class="text-center">Nama Kapal</th>
+                                                <th scope="col" class="text-center">Jenis Kapal</th>
+                                                <th scope="col" class="text-center">Ukuran</th>
+                                                @if (auth()->user()->level == 'admin')
+                                                    <th scope="col" class="text-center">Aksi</th>
+                                                @endif
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-group-divider">
+                                            @foreach ($kapal as $index => $data)
+                                                <tr>
+                                                    <td scope="col" class="text-center">{{ $index + 1 }}.</td>
+                                                    <td scope="col" class="text-center">{{ $data->wajibRetribusi->nama ?? 'N/A' }}</td>
+                                                    <td scope="col" class="text-center">{{ $data->nama_kapal }}</td>
+                                                    <td scope="col" class="text-center">{{ $data->jenisKapal->jenis_kapal ?? 'N/A' }}</td>
+                                                    <td scope="col" class="text-center">{{ $data->ukuran }}</td>
+
+                                                    @if (auth()->user()->level == 'admin')
+                                                        <td scope="col" class="text-center">
+                                                            <a href="{{ route('kapalku.edit', $data->id) }}"
+                                                                class="btn btn-primary btn-sm m-1">Ubah</a>
+
+                                                            <form
+                                                                action="{{ route('kapalku.destroy', $data->id) }}"
+                                                                method="POST" style="display:inline;">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger btn-sm m-1"
+                                                                    onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
+                                                            </form>
+                                                        </td>
+                                                    @endif
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
 
-                                <table class="table table-bordered mt-3">
-                                    <thead class="table-light">
-                                        <tr>
-                                        <th style="width: 50px;">No.</th>
-                                            <th>nama Pemilik</th>
-                                            <th>Nama kapal</th>
-                                            <th>jenis kapal</th>
-                                            <th>ukuran</th>
-                                            <th style="width: 150px;">Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>alip</td>
-                                            <td>B112</td>
-                                            <td>sangkuriang</td>
-                                            <td>25 m</td>
-                                            <td>
-                                                <button class="btn btn-primary btn-sm">Ubah</button>
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                            </td>
-                                        </tr>
-                                        <!-- Repeat rows as needed -->
-                                    </tbody>
-                                </table>
+
                             </div>
+                        </div>
 
-                        </div> <!-- End Card -->
-                    </div> <!-- End Column -->
-                </div> <!-- End Row 1 -->
+                    </div>
 
+                </div>
                 @include('Template.footer')
-            </div> <!-- End Container Fluid -->
-        </div> <!-- End Body Wrapper -->
-    </div> <!-- End Page Wrapper -->
-
-    @include('Template.script')
+            </div>
+        </div>
+        @include('Template.script')
 </body>
 
 </html>
