@@ -1,9 +1,9 @@
 <?php
 use App\Http\Controllers\Admin\KategoriController;
-use App\Http\Controllers\User\KonfirmasiPembayaranController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\KapalRetribusiController;
 use App\Http\Controllers\User\Kapalku1Controller;
+use App\Http\Controllers\User\KonfirmasiPembayaranController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
@@ -123,7 +123,8 @@ Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
     route::resource('kategori',KategoriController::class);
     route::resource('kapalku1',Kapalku1Controller::class);
     route::resource('kapalRetribusi',KapalRetribusiController::class);
-    route::resource('KonfirmasiPembayran',KonfirmasiPembayaranController::class);
+    route::resource('KonfirmasiPembayaran',KonfirmasiPembayaranController::class);
+
 });
 
 

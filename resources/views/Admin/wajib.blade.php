@@ -30,12 +30,19 @@
                   <div class="col">
                     <div class="card">
                       <div class="card-body">
-                        <h5 class="card-title">Wajib Retribusi</h5>
-                        <hr>
+                        @if (auth()->user()->level == 'admin')
+                                    <h5 class="card-title">Wajib Retribusi</h5>
+                                    <hr>
+                                @endif
+                                @if (auth()->user()->level == 'karyawan')
+                                    <h5 class="card-title">Kapalku</h5>
+                                    <hr>
+                                @endif
                         <div class="d-flex justify-content-between mb-2">
                           <a href="{{ route('wajib.create') }}" class="btn btn-primary">Tambah Data</a>
                           <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari...">
                         </div>
+                        @if (auth()->user()->level == 'admin')
                         {{-- <div class="table-responsive table-bordered"> --}}
                           <table class="table text-nowrap align-middle mb-0 table-striped" id="dataTable">
                             <thead>
@@ -71,6 +78,7 @@
                               @endforeach
                             </tbody>
                           </table>
+                          @endif
                         </div>
                       </div>
                     </div>

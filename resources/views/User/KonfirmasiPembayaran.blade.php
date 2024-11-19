@@ -3,93 +3,100 @@
 
 <head>
     @include('Template.head')
+    <style>
+        .form-control,
+        .form-select {
+            background: #e4e7ea;
+            color: #3a4752;
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-
-        <!-- Sidebar Start -->
+    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6">
+        <!-- Sidebar -->
         @include('Template.left-sidebar')
-        <!-- Sidebar End -->
 
-        <!-- Main Wrapper -->
         <div class="body-wrapper">
-            <!-- Header Start -->
+            <!-- Header -->
             <header class="app-header">
                 @include('Template.navbar')
             </header>
-            <!-- Header End -->
 
             <div class="container-fluid">
-    
                 <div class="row">
-                    <div class="col-lg-100 d-flex align-items-stretch">
-                        <div class="card w-100">
-                            
-                            <!DOCTYPE html>
-                            <html lang="en">
-                            <head>
-                                <meta charset="UTF-8">
-                                <meta http-equiv="X-UA-Compatible="IE=edge">
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title>Payment Form</title>
-                                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-                            </head>
-                            <body style="background-color: #e0e0e0;">
-                                <div class="container mt-5">
-                                    <div class="p-4 bg-white rounded shadow-sm">
-                                        <form>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <label for="jenisBank" class="form-label">Jenis Bank</label>
-                                                    <select id="jenisBank" class="form-select">
-                                                        <option>Pilih</option>
-                                                        <!-- Add more options here -->
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="nominalTransfer" class="form-label">Nominal Transfer</label>
-                                                    <input type="text" id="nominalTransfer" class="form-control" value="Rp. 1.000.000" readonly>
-                                                </div>
-                                            </div>
-                                            <div class="row mb-3">
-                                                <div class="col-md-6">
-                                                    <label for="nomorRekening" class="form-label">Nomor Rekening</label>
-                                                    <select id="nomorRekening" class="form-select">
-                                                        <option>Pilih</option>
-                                                        <!-- Add more options here -->
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="buktiPembayaran" class="form-label">Bukti Pembayaran</label>
-                                                    <div class="input-group">
-                                                        <input type="file" id="buktiPembayaran" class="form-control">
-                                                        <button class="btn btn-secondary" type="button">Browse</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex justify-content-end">
-                                                <button type="submit" class="btn btn-primary">Kirim</button>
-                                            </div>
-                                        </form>
+                    <div class="col">
+                        <div class="card profile-card">
+                            <div class="card-body">
+                                <h5 class="card-title">Konfirmasi Pembayaran Retribusi</h5>
+                                <hr>
+
+                                <!-- Menampilkan pesan error -->
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
                                     </div>
-                                </div>
-                            </body>
-                            </html>
-                            
+                                @endif
 
-                        </div> <!-- End Card -->
-                    </div> <!-- End Column -->
-                </div> <!-- End Row 1 -->
+                                <form action="{{ route('KonfirmasiPembayaran.store') }}" method="POST"
+                                    enctype="multipart/form-data">
+                                    @csrf
+                                    <!-- Field untuk jenis bank tetap -->
+                                    <div class="row mb-3">
+                                        <label for="id_ref_bank" class="col-sm-3 col-form-label">Jenis Bank</label>
+                                        <div class="col-sm-9">
+                                            <select name="id_ref_bank" class="form-select" id="choices">
+                                                @foreach ($banks as $bank)
+                                                    <option value="{{ $bank->id }}">{{ $bank->nama_bank }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
 
-                @include('Template.footer')
-            </div> <!-- End Container Fluid -->
-        </div> <!-- End Body Wrapper -->
-    </div> <!-- End Page Wrapper -->
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label">Nomor Rekening</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="no_rekening" class="form-control" required>
+                                        </div>
+                                    </div>
 
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label">Nama Pemilik Rekening</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="nama_pemilik_rekening" class="form-control"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label">Nominal Transfer</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" name="biaya_retribusi" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="row mb-3">
+                                        <label class="col-sm-3 col-form-label">Bukti Pembayaran</label>
+                                        <div class="col-sm-9">
+                                            <input type="file" name="file_bukti" class="form-control" accept=".jpg,.jpeg,.png,.pdf">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary mt-4">Konfirmasi Pembayaran</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @include('Template.footer')
+        </div>
+    </div>
     @include('Template.script')
+
+
 </body>
 
 </html>
