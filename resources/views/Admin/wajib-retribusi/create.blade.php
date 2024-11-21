@@ -15,16 +15,10 @@
             </a>
         </li>
     </ul>
-    <div class="container">
-        <div class="page-inner">
-            <div class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"></div>
-            <div class="row">
-
-
                 <div class="col">
                     <div class="card profile-card">
                         <div class="card-body">
-                            <h5 class="card-title">Tambah Rekening Pembayaran</h5>
+                            <h5 class="card-title">Tambah wajib retribusi</h5>
                             <hr>
                             <form action="{{ route('wajib.store') }}" method="POST">
                                 @csrf

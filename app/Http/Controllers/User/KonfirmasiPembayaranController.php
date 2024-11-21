@@ -5,15 +5,16 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\MsRekening;
-use App\Models\KonfirmasiBayar;
+use App\Models\Konfirmasibayar;
 use App\Models\RefBank;
 
 class KonfirmasiPembayaranController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $banks = RefBank::all();
         $msRekenings = MsRekening::all();
-        return view('User.KonfirmasiPembayaran', compact('banks','msRekenings'));
+        return view('User.konfirmasipembayaran', compact('banks', 'msRekenings'));
     }
 
     public function confirm(Request $request)
@@ -45,7 +46,9 @@ class KonfirmasiPembayaranController extends Controller
         $konfirmasiBayar->no_rekening_pemilik = $msRekening->no_rekening;
         $konfirmasiBayar->status = 'P';
         $konfirmasiBayar->save();
+        $konfirmasiBayar->tindaklanjut_tgl = now();
+        $konfirmasiBayar->tindaklanjut_user = 'admin';
 
-        return redirect()->route('Konfirmasi.index')->with('success', 'Terima kasih');
+        return redirect()->route('konfirmasi.index')->with('success', 'Terima kasih telah membayar retribusi. Mohon tunggu konfirmasi dari admin.');
     }
 }

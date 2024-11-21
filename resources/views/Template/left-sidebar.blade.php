@@ -101,14 +101,14 @@
               <span>
                 <i class="ti ti-user"></i>
               </span>
-              <span class="hide-menu">profil</span>
+              <span class="hide-menu">Profile</span>
             </a>
           <li class="sidebar-item">
             <a class="sidebar-link" href="{{ route('kategori.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-wallet"></i>
               </span>
-              <span class="hide-menu">kategori retribusi</span>
+              <span class="hide-menu">Kategori Retribusi</span>
             </a>
 
           </li>
@@ -126,7 +126,7 @@
                 <i class="ti ti-cards"></i>
               </span>
               <span class="hide-menu">kapal Wajib
-                <p> retribusi</p></span>
+                <p> Retribusi</p></span>
             </a>
           </li>
           <li class="sidebar-item">
@@ -134,12 +134,12 @@
               <span>
                 <i class="ti ti-file-description"></i>
               </span>
-              <span class="hide-menu">konfirmasi pembayaran
-                   <p> retribusi</p></span>
+              <span class="hide-menu">konfirmasi Pembayaran
+                   <p> Retribusi</p></span>
             </a>
           <li class="nav-small-cap">
             <i class="ti ti-report"></i>
-            <span class="hide-menu">laporan</span>
+            <span class="hide-menu">Laporan</span>
 
           {{-- <li class="sidebar-item">
             <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">

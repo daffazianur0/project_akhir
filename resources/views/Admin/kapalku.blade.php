@@ -89,6 +89,19 @@
             </div>
         </div>
         @include('Template.script')
+
+         <!-- Script untuk fitur search -->
+         <script>
+            document.getElementById('searchInput').addEventListener('keyup', function() {
+                const filter = this.value.toLowerCase();
+                const rows = document.querySelectorAll('#dataTable tbody tr');
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
+                    row.style.display = rowText.includes(filter) ? '' : 'none';
+                });
+            });
+        </script>
 </body>
 
 </html>

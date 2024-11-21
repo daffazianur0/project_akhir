@@ -83,6 +83,9 @@
                                     <label class="col-sm-3 col-form-label">Nomor Rekening</label>
                                     <div class="col-sm-9">
                                         <input type="text" name="no_rekening" class="form-control">
+                                        @error('no_rekening')
+                                            <div class="text-danger">{{$message}}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-primary mt-4">Simpan</button>

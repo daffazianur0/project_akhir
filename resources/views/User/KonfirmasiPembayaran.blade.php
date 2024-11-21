@@ -67,7 +67,7 @@
                                     <div class="row mb-3">
                                         <label class="col-sm-3 col-form-label">Nama Pemilik Rekening</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="nama_pemilik_rekening" class="form-control"
+                                            <input type="text" name="nama_rekening" class="form-control"
                                                 required>
                                         </div>
                                     </div>

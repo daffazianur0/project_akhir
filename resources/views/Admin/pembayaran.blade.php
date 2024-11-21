@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -26,11 +25,10 @@
             <div class="container-fluid">
                 <!-- Row 1 -->
                 <div class="row">
-                    <div class="col-lg-100 d-flex align-items-stretch">
+                    <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="card w-100">
-
                             <div class="table-container">
-                                <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center mb-3">
                                     <button class="btn btn-primary btn-add">Tambah Data</button>
                                     <div class="input-group" style="width: 200px;">
                                         <span class="input-group-text">Search:</span>
@@ -38,45 +36,46 @@
                                     </div>
                                 </div>
 
-                                <table class="table table-bordered mt-3">
+                                <table class="table table-bordered">
                                     <thead class="table-light">
                                         <tr>
-                                        <th style="width: 50px;">No.</th>
-                                            <th>nama lengkap</th>
-                                            <th>rekening</th>
-                                            <th>bukti</th>
-                                            <th>tanggal bayar</th>
-                                            <th>tanggal tindak  lanjut</th>
-                                            <th>tindak lanjut user</th>
+                                            <th style="width: 50px;">No.</th>
+                                            <th>Nama Lengkap</th>
+                                            <th>Rekening</th>
+                                            <th>Bukti</th>
+                                            <th>Tanggal Bayar</th>
+                                            <th>Tanggal Tindak Lanjut</th>
+                                            <th>Tindak Lanjut User</th>
                                             <th style="width: 150px;">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>alip aja</td>
-                                            <td>4363112</td>
-                                            <td>foto belum ada</td>
-                                            <td>52631234</td>
-                                            <td>10-02-2024</td>
-                                            <td>admin</td>
-
-                                            <td>
-                                                <button class="btn btn-primary btn-sm">Ubah</button>
-                                                <button class="btn btn-danger btn-sm">Hapus</button>
-                                            </td>
-                                        </tr>
-                                        <!-- Repeat rows as needed -->
+                                    <tbody class="table-group-divider">
+                                        @foreach($pembayaran as $data)
+                                            <tr>
+                                                <td class="text-center">{{ $loop->iteration }}</td>
+                                                <td class="text-center">{{ $data->nama_pemilik_rekening }}</td>
+                                                <td class="text-center">{{ $data->no_rekening }}</td>
+                                                <td class="text-center">
+                                                    <a href="{{ Storage::url($data->file_bukti) }}" target="_blank">Lihat Bukti</a>
+                                                </td>
+                                                <td class="text-center">{{ $data->created_at->format('d-m-Y') }}</td>
+                                                <td class="text-center">{{ $data->tanggal_tindak_lanjut ?? 'Belum Ditindak' }}</td>
+                                                <td class="text-center">{{ $data->tindak_lanjut_user ?? 'Belum Ada' }}</td>
+                                                <td class="text-center">
+                                                    <a href="" class="btn btn-success btn-sm m-1">Sesuai</a>
+                                                    <a href="" class="btn btn-danger btn-sm m-1">Tidak Sesuai</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
-
                         </div> <!-- End Card -->
                     </div> <!-- End Column -->
                 </div> <!-- End Row 1 -->
-
-                @include('Template.footer')
             </div> <!-- End Container Fluid -->
+
+            @include('Template.footer')
         </div> <!-- End Body Wrapper -->
     </div> <!-- End Page Wrapper -->
 

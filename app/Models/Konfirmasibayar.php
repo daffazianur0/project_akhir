@@ -9,29 +9,45 @@ class KonfirmasiBayar extends Model
 {
     use HasFactory;
 
-    protected $table = 'konfirmasi_pembayaran';
+    use HasFactory;
+
+    protected $table = 'konfirmasi_Pembayaran';
+    protected $primaryKey = 'id';
+
     protected $fillable = [
         'id_user',
         'id_ms_rekening',
-        'id_ref_bank',
-        'nama_pemilik_rekening',
-        'no_rekening_pemilik',
         'file_bukti',
         'tgl_bayar',
+        'nama_pemilik_rekening',
+        'id_ref_bank',
+        'no_rekening_pemilik',
         'status',
         'tindaklanjut_tgl',
-        'tindaklanjut_user'
+        'tindaklanjut_user',
     ];
 
-    public function user() {
+    /**
+     * Relasi ke tabel `users`
+     */
+    public function user()
+    {
         return $this->belongsTo(User::class, 'id_user');
     }
 
-    public function msRekening() {
+    /**
+     * Relasi ke tabel `ms_rekening`
+     */
+    public function msRekening()
+    {
         return $this->belongsTo(MsRekening::class, 'id_ms_rekening');
     }
 
-    public function refBank() {
+    /**
+     * Relasi ke tabel `ref_bank`
+     */
+    public function refBank()
+    {
         return $this->belongsTo(RefBank::class, 'id_ref_bank');
     }
 }

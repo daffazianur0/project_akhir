@@ -54,7 +54,7 @@ class WajibController extends Controller
         ]);
 
         return redirect()->route('wajib.index')->with('success', 'Data rekening berhasil ditambahkan.');
-        
+
     }
 
     /**

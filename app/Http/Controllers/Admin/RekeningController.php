@@ -35,7 +35,7 @@ class RekeningController extends Controller
         $request->validate([
             'id_ref_bank' => 'required|exists:ref_bank,id',
             'nama_akun' => 'required|string|max:50',
-            'no_rekening' => 'required|string|max:50',
+            'no_rekening' => 'required|string|max:50|unique:ms_rekening,no_rekening',
         ]);
 
         MsRekening::create($request->all());
@@ -72,7 +72,9 @@ class RekeningController extends Controller
          $request->validate([
              'id_ref_bank' => 'required|exists:ref_bank,id',
              'nama_akun' => 'required|string|max:50',
-             'no_rekening' => 'required|string|max:50',
+             'no_rekening' => 'required|string|max:50unique:ms_rekening,no_rekening, . $id,',
+         ],[
+             'no_rekening' => 'Nomer rekening anda sudah terdaftar',
          ]);
 
          $rekening = MsRekening::findOrFail($id);
