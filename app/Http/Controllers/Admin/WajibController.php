@@ -37,7 +37,7 @@ class WajibController extends Controller
         $request->validate([
             'nama' => 'required|string|max:50',
             'no_hp' => 'required|string|max:16',
-            'nik' => 'required|string|max:16',
+            'nik' => 'required|string|max:16|unique:wajib_retribusi,nik',
             'alamat' => 'required|string',
             'id_kelurahan' => 'required|exists:kelurahan,id',
             'status' => 'required|in:A,B',
@@ -79,7 +79,10 @@ class WajibController extends Controller
             'alamat' => 'required|string',
             'id_kelurahan' => 'required|exists:kelurahan,id',
             'status' => 'required|in:A,B',
+        ],[
+            'nik' => 'Nik anda sudah terdaftar',
         ]);
+
 
         $wajibretribusi = WajibRetribusi::findOrFail($id);
         $wajibretribusi->update([

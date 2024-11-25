@@ -53,10 +53,14 @@
                                         @foreach($pembayaran as $data)
                                             <tr>
                                                 <td class="text-center">{{ $loop->iteration }}</td>
-                                                <td class="text-center">{{ $data->nama_pemilik_rekening }}</td>
+                                                <td class="text-center">{{ $data->nama_rekening }}</td>
                                                 <td class="text-center">{{ $data->no_rekening }}</td>
                                                 <td class="text-center">
-                                                    <a href="{{ Storage::url($data->file_bukti) }}" target="_blank">Lihat Bukti</a>
+                                                    @if ($data->file_bukti)
+                                                        <img src="{{ asset('storage/' . $data->file_bukti) }}" class="rounded img-fluid" style="max-width: 80px;">
+                                                    @else
+                                                        <span>No Image Available</span>
+                                                    @endif
                                                 </td>
                                                 <td class="text-center">{{ $data->created_at->format('d-m-Y') }}</td>
                                                 <td class="text-center">{{ $data->tanggal_tindak_lanjut ?? 'Belum Ditindak' }}</td>

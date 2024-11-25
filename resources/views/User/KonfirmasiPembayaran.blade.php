@@ -42,10 +42,9 @@
                                     </div>
                                 @endif
 
-                                <form action="{{ route('KonfirmasiPembayaran.store') }}" method="POST"
-                                    enctype="multipart/form-data">
+                                <form action="{{ route('KonfirmasiPembayaran.store') }}" method="POST" enctype="multipart/form-data">
                                     @csrf
-                                    <!-- Field untuk jenis bank tetap -->
+
                                     <div class="row mb-3">
                                         <label for="id_ref_bank" class="col-sm-3 col-form-label">Jenis Bank</label>
                                         <div class="col-sm-9">
@@ -55,41 +54,33 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label">Nomor Rekening</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="no_rekening" class="form-control" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label">Nama Pemilik Rekening</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="nama_rekening" class="form-control"
-                                                required>
-                                        </div>
+                                        <div class="form-group">
+                                            <label for="nominal_transfer">Nominal Transfer:</label>
+                                            <input type="number" id="nominal_transfer" name="nominal_transfer" class="form-control" required>
+                                          </div>
                                     </div>
                                     <div class="row mb-3">
                                         <label class="col-sm-3 col-form-label">Nominal Transfer</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="biaya_retribusi" class="form-control">
-                                        </div>
+                                        <select id="id_ms_rekening" name="id_ms_rekening" class="form-control" required>
+                                            <option value="">Pilih Rekening</option>
+                                            @foreach ($msRekenings as $rekening)
+                                            <option value="{{ $rekening->id }}" {{ old('id_ms_rekening') == $rekening->id ? 'selected' : '' }}>
+                                              {{ $rekening->no_rekening }} ({{ $rekening->nama_akun }})
+                                            </option>
+                                            @endforeach
+                                          </select>
                                     </div>
+
                                     <div class="row mb-3">
                                         <label class="col-sm-3 col-form-label">Bukti Pembayaran</label>
                                         <div class="col-sm-9">
-                                            <input type="file" name="file_bukti" class="form-control" accept=".jpg,.jpeg,.png,.pdf">
+                                            <input type="file" name="file_bukti" class="form-control" accept=".jpg,.jpeg,.png,.pdf" required>
                                         </div>
                                     </div>
+
                                     <button type="submit" class="btn btn-primary mt-4">Konfirmasi Pembayaran</button>
                                 </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
 
             @include('Template.footer')
         </div>

@@ -36,7 +36,7 @@
                                     @endif
                                     <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari...">
                                 </div>
-                                <table class="table table-bordered mt-2" id="dataTable">
+                                <table class="table table-border mt-2" id="dataTable">
                                     <thead>
                                         <tr class="border-2 border-bottom border-primary border-0">
                                             <th style="width: 50px;">No.</th>
