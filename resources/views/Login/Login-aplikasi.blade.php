@@ -37,7 +37,7 @@
 						<form action="{{ route('postlogin')}}" method="post" class="login-form">
                             @csrf
 		      		<div class="form-group">
-		      			<input type="text" class="form-control rounded-left" placeholder="Email" name="email" required>
+		      			<input type="text" class="form-control rounded-left" placeholder="username" name="name" required>
 		      		</div>
 	            <div class="form-group d-flex">
 	              <input type="password" class="form-control rounded-left" placeholder="Password" name="password" required>

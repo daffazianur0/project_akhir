@@ -11,4 +11,5 @@ class KapalRetribusiController extends Controller
     {
         return view('User.KapalRetribusi');
     }
+    
 }

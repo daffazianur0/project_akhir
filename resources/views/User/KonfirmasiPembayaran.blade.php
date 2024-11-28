@@ -54,13 +54,13 @@
                                                 @endforeach
                                             </select>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="nominal_transfer">Nominal Transfer:</label>
+                                        <div class="row mb-3">
+                                            <label for="nominal_transfer" class="col-sm-3 col-form-label">Nominal Transfer:</label>
                                             <input type="number" id="nominal_transfer" name="nominal_transfer" class="form-control" required>
                                           </div>
                                     </div>
                                     <div class="row mb-3">
-                                        <label class="col-sm-3 col-form-label">Nominal Transfer</label>
+                                        <label class="col-sm-3 col-form-label">Nomor rekening</label>
                                         <select id="id_ms_rekening" name="id_ms_rekening" class="form-control" required>
                                             <option value="">Pilih Rekening</option>
                                             @foreach ($msRekenings as $rekening)

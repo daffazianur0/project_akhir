@@ -15,7 +15,7 @@ class LoginController extends Controller
 
 
     public function postlogin(Request $request){
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('name', 'password');
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             if ($user->level == 'admin') {

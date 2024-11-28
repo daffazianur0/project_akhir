@@ -36,7 +36,7 @@
                                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                 <title>User Profile Form</title>
                                 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-                                <style>
+                                {{-- <style>
                                     .form-container {
                                         max-width: 600px;
                                         margin: 20px auto;
@@ -51,7 +51,7 @@
                                     .form-control {
                                         background-color: #e2edf7;
                                     }
-                                </style>
+                                </style> --}}
                             </head>
                             <body>
 
@@ -95,33 +95,59 @@
                                     <button type="submit" class="btn btn-primary btn-block">Simpan</button>
                                 </form>
 
-                                <form>
+                                            <!-- Display Alert Messages -->
+                                @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
 
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="passwordLama">Password Lama</label>
-                                            <input type="password" class="form-control" id="passwordLama">
-                                        </div>
-                                        <div class="form-group col-md-6">
-                                            <label for="passwordBaru">Password Baru</label>
-                                            <input type="password" class="form-control" id="passwordBaru">
-                                        </div>
-                                    </div>
+                            @if ($errors->any())
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    <ul class="mb-0">
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
 
-                                    <div class="form-row">
-                                        <div class="form-group col-md-6">
-                                            <label for="konfirmasiPasswordBaru">Konfirmasi Password Baru</label>
-                                            <input type="password" class="form-control" id="konfirmasiPasswordBaru">
-                                        </div>
-                                    </div>
+                            <form method="POST" action="{{ route('Profile.updatePassword', ['Profile' => Auth::user()->id]) }}">
+                                @csrf
+                                @method('PUT')
 
-                                    <button type="submit" class="btn btn-primary btn-block">Simpan</button>
-                                </form>
-                            </div>
+                                <!-- Password Lama -->
+                                <div class="form-group">
+                                    <label for="passwordLama">Password Lama</label>
+                                    <input type="password" name="passwordLama" id="passwordLama" class="form-control" required>
+                                </div>
+
+                                <!-- Password Baru -->
+                                <div class="form-group">
+                                    <label for="passwordBaru">Password Baru</label>
+                                    <input type="password" name="passwordBaru" id="passwordBaru" class="form-control" required>
+                                </div>
+
+                                <!-- Konfirmasi Password Baru -->
+                                <div class="form-group">
+                                    <label for="passwordBaru_confirmation">Konfirmasi Password Baru</label>
+                                    <input type="password" name="passwordBaru_confirmation" id="passwordBaru_confirmation" class="form-control" required>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block">Simpan</button>
+                            </form>
+                        </div>
 
                             <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
                             <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
                             </body>
+                                {{-- @endif --}}
                             </html>
 
 

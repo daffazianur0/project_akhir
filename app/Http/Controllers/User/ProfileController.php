@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\wajibRetribusi;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -29,9 +30,9 @@ class ProfileController extends Controller
         $user->name = $request->input('username');
         $user->save();
 
-        $wajibRetribusi = $user->wajibRetribusi;
+        $Wajib_retribusi = $user->Wajib_retribusi;
 
-        foreach ($wajibRetribusi as $wajib) {
+        foreach ($Wajib_retribusi as $wajib) {
             $wajib->nik = $request->input('nik');
             $wajib->nama = $request->input('namaLengkap');
             $wajib->no_hp = $request->input('telepon');
@@ -39,9 +40,26 @@ class ProfileController extends Controller
             $wajib->save();
         }
 
-        return redirect()->route('profil.index')->with('success', 'Profil berhasil diperbarui!');
+        return redirect()->route('Profile.index')->with('success', 'Profil berhasil diperbarui!');
 }
 
+public function updatePassword(Request $request)
+{
+    $request->validate([
+        'passwordLama' => 'required|string',
+        'passwordBaru' => 'required|string|min:8|confirmed',
+    ]);
 
+    $user = Auth::user();
+
+    if (!\Hash::check($request->passwordLama, $user->password)) {
+        return redirect()->back()->withErrors(['passwordLama' => 'Password lama tidak sesuai.']);
+    }
+
+    // Simpan password baru
+    $user->password = \Hash::make($request->passwordBaru);
+    $user->save();
+
+    return redirect()->route('profil.index')->with('success', 'Password berhasil diubah!');
 }
-
+}
