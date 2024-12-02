@@ -126,6 +126,9 @@ Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
     route::resource('KonfirmasiPembayaran',KonfirmasiPembayaranController::class);
     Route::post('/konfirmasi/confirm', [KonfirmasiPembayaranController::class, 'confirm'])->name('konfirmasi.confirm');
     Route::put('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('Profile.updatePassword');
+    Route::post('/update-status/{id}', [PembayaranController::class, 'updateStatus'])->name('konfirmasi-bayar.update-status');
+
+
 
 });
 

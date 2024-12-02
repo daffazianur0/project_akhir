@@ -30,8 +30,9 @@
                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                     <button class="btn btn-primary btn-add">Tambah Data</button>
                                     <div class="input-group" style="width: 300px;">
-                                        <span class="input-group-text">Search:</span>
-                                        <input type="text" id="search-input" class="form-control" placeholder="Search">
+                                        <span class="input-group-text" id="search-label">Search:</span>
+                                        <input type="text" id="search-input" class="form-control" placeholder="Search"
+                                            aria-label="Search" aria-describedby="search-label">
                                     </div>
                                 </div>
 
@@ -49,7 +50,7 @@
                                             <th style="width: 150px;">Aksi</th>
                                         </tr>
                                     </thead>
-                                    <tbody class="table-group-divider">
+                                    <tbody>
                                         @foreach($pembayaran as $data)
                                         <tr>
                                             <td class="text-center">{{ $loop->iteration }}</td>
@@ -57,17 +58,31 @@
                                             <td class="text-center">{{ $data->no_rekening }}</td>
                                             <td class="text-center">
                                                 @if ($data->file_bukti)
-                                                <img src="{{ asset('storage/' . $data->file_bukti) }}" class="rounded img-fluid" style="max-width: 80px;">
+                                                <img src="{{ asset('storage/' . $data->file_bukti) }}" alt="Bukti Pembayaran"
+                                                    class="rounded img-fluid" style="max-width: 80px;">
                                                 @else
-                                                <span>No Image Available</span>
+                                                <span class="text-muted">No Image Available</span>
                                                 @endif
                                             </td>
                                             <td class="text-center">{{ $data->created_at->format('d-m-Y') }}</td>
                                             <td class="text-center">{{ $data->tanggal_tindak_lanjut ?? 'Belum Ditindak' }}</td>
                                             <td class="text-center">{{ $data->tindak_lanjut_user ?? 'Belum Ada' }}</td>
                                             <td class="text-center">
-                                                <a href="" class="btn btn-success btn-sm m-1">Sesuai</a>
-                                                <a href="" class="btn btn-danger btn-sm m-1">Tidak Sesuai</a>
+                                                @if ($data->status === 'Y')
+                                                    <span class="badge bg-success">Sesuai</span>
+                                                @elseif ($data->status === 'N')
+                                                    <span class="badge bg-danger">Tidak Sesuai</span>
+                                                @else
+                                                
+                                                <form action="{{ route('konfirmasi-bayar.update-status', $data->id) }}" method="POST" class="d-flex justify-content-start">
+                                                    @csrf
+
+                                                    <button type="submit" name="status" value="sesuai" class="btn btn-success btn-sm me-2">Sesuai</button>
+                                                    <button type="submit" name="status" value="tidak_sesuai" class="btn btn-danger btn-sm">Tidak Sesuai</button>
+                                                </form>
+
+                                                @endif
+
                                             </td>
                                         </tr>
                                         @endforeach
@@ -87,17 +102,21 @@
 
     <script>
         // JavaScript Search Functionality
-        document.getElementById('search-input').addEventListener('input', function () {
-            const filter = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#data-table tbody tr');
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', function () {
+                    const filter = this.value.toLowerCase();
+                    const rows = document.querySelectorAll('#data-table tbody tr');
 
-            rows.forEach(row => {
-                const rowText = row.textContent.toLowerCase();
-                row.style.display = rowText.includes(filter) ? '' : 'none';
-            });
+                    rows.forEach(row => {
+                        const rowText = row.textContent.toLowerCase();
+                        row.style.display = rowText.includes(filter) ? '' : 'none';
+                    });
+                });
+            }
         });
     </script>
 </body>
 
 </html>
- 

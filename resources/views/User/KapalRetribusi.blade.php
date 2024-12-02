@@ -26,19 +26,20 @@
             <div class="container-fluid">
                 <!-- Row 1 -->
                 <div class="row">
-                    <div class="col-lg-100 d-flex align-items-stretch">
+                    <div class="col-lg-12 d-flex align-items-stretch">
                         <div class="card w-100">
-
-                            <div class="table-container">
-                                <div class="d-flex justify-content-between align-items-center">
-
-                                    <div class="input-group" style="width: 200px;">
-                                        <span class="input-group-text">Search:</span>
-                                        <input type="text" class="form-control" placeholder="Search">
+                            <div class="table-container p-3">
+                                <!-- Search & Add Button -->
+                                <div class="d-flex justify-content-between align-items-center mb-3">
+                                    <div class="input-group" style="width: 300px;">
+                                        <span class="input-group-text" id="search-label">Search:</span>
+                                        <input type="text" id="search-input" class="form-control" placeholder="Search"
+                                            aria-label="Search" aria-describedby="search-label">
                                     </div>
                                 </div>
 
-                                <table class="table table-bordered mt-3">
+                                <!-- Table -->
+                                <table class="table table-bordered" id="data-table">
                                     <thead class="table-light">
                                         <tr>
                                         <th style="width: 50px;">No.</th>
@@ -49,15 +50,18 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($kapals as $key => $kapal)
                                         <tr>
-                                            <td>1</td>
-                                            <td>kapallaut</td>
-                                            <td>rp.1000,000</td>
-                                            <td>22 juli 2024</td>
-
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $kapal->nama_kapal }}</td>
+                                            <td>Rp
+                                                {{ number_format($kapal->jenisKapal->biaya_retribusi, 0, ',', '.') ?? 'Tidak ada biaya' }}
+                                            </td>
+                                            <td>{{ $kapal->created_at->format('d F Y') }}</td>
                                         </tr>
                                         <!-- Repeat rows as needed -->
                                     </tbody>
+                                    @endforeach
                                 </table>
                             </div>
 
@@ -70,7 +74,7 @@
         </div> <!-- End Body Wrapper -->
     </div> <!-- End Page Wrapper -->
 
-    @include('Template.script')
+    @include('Template.script')         
 </body>
 
 </html>
