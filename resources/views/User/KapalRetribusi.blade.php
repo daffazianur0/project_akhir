@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -34,7 +33,7 @@
                                     <div class="input-group" style="width: 300px;">
                                         <span class="input-group-text" id="search-label">Search:</span>
                                         <input type="text" id="search-input" class="form-control" placeholder="Search"
-                                            aria-label="Search" aria-describedby="search-label">
+                                            aria-label="Search" aria-describedby="search-label" onkeyup="searchTable()">
                                     </div>
                                 </div>
 
@@ -42,11 +41,10 @@
                                 <table class="table table-bordered" id="data-table">
                                     <thead class="table-light">
                                         <tr>
-                                        <th style="width: 50px;">No.</th>
-                                            <th>Nama kapal</th>
-                                            <th>nilai retribusi</th>
-                                            <th>tanggal pembayaran</th>
-
+                                            <th style="width: 50px;">No.</th>
+                                            <th>Nama Kapal</th>
+                                            <th>Nilai Retribusi</th>
+                                            <th>Tanggal Pembayaran</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -59,9 +57,8 @@
                                             </td>
                                             <td>{{ $kapal->created_at->format('d F Y') }}</td>
                                         </tr>
-                                        <!-- Repeat rows as needed -->
+                                        @endforeach
                                     </tbody>
-                                    @endforeach
                                 </table>
                             </div>
 
@@ -74,7 +71,37 @@
         </div> <!-- End Body Wrapper -->
     </div> <!-- End Page Wrapper -->
 
-    @include('Template.script')         
+    @include('Template.script')
+
+    <!-- Script untuk fitur search -->
+    <script>
+        function searchTable() {
+            // Ambil input dari kolom pencarian
+            let input = document.getElementById("search-input").value.toLowerCase();
+            let table = document.getElementById("data-table");
+            let rows = table.getElementsByTagName("tr");
+
+            // Loop melalui semua baris di tabel, kecuali header
+            for (let i = 1; i < rows.length; i++) {
+                let cells = rows[i].getElementsByTagName("td");
+                let rowMatch = false;
+
+                // Loop melalui setiap kolom dalam baris
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j]) {
+                        let cellText = cells[j].textContent || cells[j].innerText;
+                        if (cellText.toLowerCase().indexOf(input) > -1) {
+                            rowMatch = true;
+                            break;
+                        }
+                    }
+                }
+
+                // Tampilkan atau sembunyikan baris berdasarkan hasil pencarian
+                rows[i].style.display = rowMatch ? "" : "none";
+            }
+        }
+    </script>
 </body>
 
 </html>

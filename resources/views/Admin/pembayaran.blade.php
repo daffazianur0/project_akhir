@@ -28,18 +28,15 @@
                             <div class="table-container p-3">
                                 <!-- Search & Add Button -->
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <button class="btn btn-primary btn-add">Tambah Data</button>
                                     <div class="input-group" style="width: 300px;">
-                                        <span class="input-group-text" id="search-label">Search:</span>
-                                        <input type="text" id="search-input" class="form-control" placeholder="Search"
-                                            aria-label="Search" aria-describedby="search-label">
+                                        <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari...">
                                     </div>
                                 </div>
 
                                 <!-- Table -->
-                                <table class="table table-bordered" id="data-table">
-                                    <thead class="table-light">
-                                        <tr>
+                                <table class="table table-border" id="data-table">
+                                    <thead >
+                                        <tr class="border-2 border-bottom border-primary border-0">
                                             <th style="width: 50px;">No.</th>
                                             <th>Nama Lengkap</th>
                                             <th>Rekening</th>
@@ -73,16 +70,12 @@
                                                 @elseif ($data->status === 'N')
                                                     <span class="badge bg-danger">Tidak Sesuai</span>
                                                 @else
-                                                
                                                 <form action="{{ route('konfirmasi-bayar.update-status', $data->id) }}" method="POST" class="d-flex justify-content-start">
                                                     @csrf
-
                                                     <button type="submit" name="status" value="sesuai" class="btn btn-success btn-sm me-2">Sesuai</button>
                                                     <button type="submit" name="status" value="tidak_sesuai" class="btn btn-danger btn-sm">Tidak Sesuai</button>
                                                 </form>
-
                                                 @endif
-
                                             </td>
                                         </tr>
                                         @endforeach
@@ -100,21 +93,29 @@
 
     @include('Template.script')
 
+    <!-- Script untuk Fitur Search -->
     <script>
-        // JavaScript Search Functionality
         document.addEventListener('DOMContentLoaded', () => {
-            const searchInput = document.getElementById('search-input');
-            if (searchInput) {
-                searchInput.addEventListener('input', function () {
-                    const filter = this.value.toLowerCase();
-                    const rows = document.querySelectorAll('#data-table tbody tr');
+            const searchInput = document.getElementById('searchInput');
+            const table = document.getElementById('data-table');
+            const rows = table.querySelectorAll('tbody tr');
 
-                    rows.forEach(row => {
-                        const rowText = row.textContent.toLowerCase();
-                        row.style.display = rowText.includes(filter) ? '' : 'none';
+            searchInput.addEventListener('input', () => {
+                const filter = searchInput.value.toLowerCase();
+
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    let match = false;
+
+                    cells.forEach(cell => {
+                        if (cell.textContent.toLowerCase().includes(filter)) {
+                            match = true;
+                        }
                     });
+
+                    row.style.display = match ? '' : 'none';
                 });
-            }
+            });
         });
     </script>
 </body>

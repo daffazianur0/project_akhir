@@ -3919,3 +3919,17 @@ ul { list-style: none; padding-left: 0 }
 .timeline-widget .timeline-item .timeline-badge-wrap .timeline-badge-border { width: 1px; height: 100%; background-color: #ebf1f6 }
 .timeline-widget .timeline-item .timeline-desc { padding: 6px 16px }
 .timeline-widget .timeline-item .timeline-badge.badge-primary { border: 2px solid #5D87FF }
+
+input {
+    background-color: white !important; /* Mengubah warna background menjadi putih */
+    color: black; /* Mengubah warna teks jika diperlukan */
+    border: 1px solid #ccc; /* (Opsional) Mengatur border agar lebih jelas */
+}
+
+textarea {
+    background-color: white !important; /* Jika ada textarea, ubah juga */
+}
+
+select {
+    background-color: white !important; /* Jika ada dropdown select */
+}

@@ -31,17 +31,25 @@ class RekeningController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'id_ref_bank' => 'required|exists:ref_bank,id',
-            'nama_akun' => 'required|string|max:50',
-            'no_rekening' => 'required|string|max:50|unique:ms_rekening,no_rekening',
-        ]);
+{
+    $request->validate([
+        'id_ref_bank' => 'required|exists:ref_bank,id',
+        'nama_akun' => 'required|string|max:50',
+        'no_rekening' => 'required|string|max:50|unique:ms_rekening,no_rekening',
+    ], [
+        'id_ref_bank.required' => 'Bank wajib diisi.',
+        'id_ref_bank.exists' => 'Bank tidak valid.',
+        'nama_akun.required' => 'Nama akun wajib diisi.',
+        'no_rekening.required' => 'Nomor rekening wajib diisi.',
+        'no_rekening.unique' => 'Nomor rekening sudah terdaftar.',
+        'no_rekening.max' => 'Nomor rekening tidak boleh lebih dari 50 karakter.',
+    ]);
 
-        MsRekening::create($request->all());
+    MsRekening::create($request->all());
 
-        return redirect()->route('rekening.index')->with('success', 'Data rekening berhasil ditambahkan');
-    }
+    return redirect()->route('rekening.index')->with('success', 'Data rekening berhasil ditambahkan');
+}
+
 
     /**
      * Display the specified resource.
@@ -67,23 +75,27 @@ class RekeningController extends Controller
      /**
       * Update the specified resource in storage.
       */
-     public function update(Request $request, string $id)
-     {
-         $request->validate([
-             'id_ref_bank' => 'required|exists:ref_bank,id',
-             'nama_akun' => 'required|string|max:50',
-             'no_rekening' => 'required|string|max:50unique:ms_rekening,no_rekening, . $id,',
-         ],[
-             'no_rekening' => 'Nomer rekening anda sudah terdaftar',
-         ]);
+      public function update(Request $request, string $id)
+      {
+          $request->validate([
+              'id_ref_bank' => 'required|exists:ref_bank,id',
+              'nama_akun' => 'required|string|max:50',
+              'no_rekening' => 'required|string|max:50|unique:ms_rekening,no_rekening,' . $id,
+          ], [
+              'id_ref_bank.required' => 'Bank wajib diisi.',
+              'id_ref_bank.exists' => 'Bank tidak valid.',
+              'nama_akun.required' => 'Nama akun wajib diisi.',
+              'no_rekening.required' => 'Nomor rekening wajib diisi.',
+              'no_rekening.unique' => 'Nomor rekening sudah terdaftar.',
+              'no_rekening.max' => 'Nomor rekening tidak boleh lebih dari 50 karakter.',
+          ]);
 
-         $rekening = MsRekening::findOrFail($id);
+          $rekening = MsRekening::findOrFail($id);
 
-         $rekening->update($request->all());
+          $rekening->update($request->all());
 
-         return redirect()->route('rekening.index')->with('success', 'Data rekening berhasil ditambahkan.');
-
-     }
+          return redirect()->route('rekening.index')->with('success', 'Data rekening berhasil diperbarui.');
+      }
 
     /**
      * Remove the specified resource from storage.

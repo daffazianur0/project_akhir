@@ -68,28 +68,40 @@
                                     <div class="col-sm-9">
                                         <select name="id_ref_bank" id="id_ref_bank" class="form-select">
                                             @foreach($refBanks as $bank)
-                                                <option value="{{ $bank->id }}">{{ $bank->nama_bank }}</option>
+                                                <option value="{{ $bank->id }}" {{ old('id_ref_bank') == $bank->id ? 'selected' : '' }}>
+                                                    {{ $bank->nama_bank }}
+                                                </option>
                                             @endforeach
                                         </select>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label">Nama Akun</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="nama_akun" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-3 col-form-label">Nomor Rekening</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" name="no_rekening" class="form-control">
-                                        @error('no_rekening')
-                                            <div class="text-danger">{{$message}}</div>
+                                        @error('id_ref_bank')
+                                            <div class="text-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Nama Akun</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="nama_akun" class="form-control" value="{{ old('nama_akun') }}">
+                                        @error('nama_akun')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-3 col-form-label">Nomor Rekening</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" name="no_rekening" class="form-control" value="{{ old('no_rekening') }}">
+                                        @error('no_rekening')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary mt-4">Simpan</button>
-                        </div>
+                            </form>
+
                     </div>
                 </div>
             </div>
