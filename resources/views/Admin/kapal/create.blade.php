@@ -6,7 +6,7 @@
     <style>
         .form-control {
             background: #e4e7ea;
-            color: #3a4752;
+            color: #707e8b;
         }
     </style>
 </head>
@@ -21,7 +21,7 @@
                     <li class="nav-item">
                         <a class="nav-link" onclick="window.history.back();">
                             <iconify-icon icon="tabler:arrow-back-up" class="fs-4"></iconify-icon>
-                            <span class="nav-link me-2 fs-4">Kembali</span>
+                            <span class="btn btn-primary mt-4">Kembali</span>
                         </a>
                     </li>
                 </ul>
@@ -68,6 +68,7 @@
                             <hr>
                             <form action="{{ route('kapalku.store') }}" method="POST">
                                 @csrf
+                                <input type="hidden" name="id_user" value="{{ auth()->user()->id }}" class="form-control">
                                 <div class="row mb-3">
                                     <label class="col-sm-3 col-form-label" for="id_user">Pemilik Kapal</label>
                                     <div class="col-sm-9">

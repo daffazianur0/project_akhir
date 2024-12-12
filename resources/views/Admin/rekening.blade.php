@@ -37,11 +37,10 @@
                                                 <hr>
                                                 <div class="d-flex justify-content-between mb-2">
                                                     <a href="{{ route('rekening.create') }}" class="btn btn-primary">Tambah Data</a>
-                                                    <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari...">
                                                 </div>
                                                 <div class="table-responsive table-bordered">
-                                                    <table class="table text-nowrap align-middle mb-0 table-striped" id="dataTable">
-                                                        <thead>
+                                                    <table class="table table-border" id="datatables">
+                                                        <thead class="table-light">
                                                             <tr class="border-2 border-bottom border-primary border-0">
                                                                 <th style="width: 50px;">No.</th>
                                                                 <th><center>Jenis Bank</center></th>
@@ -89,13 +88,33 @@
 
         <!-- Script untuk fitur search -->
         <script>
-            document.getElementById('searchInput').addEventListener('keyup', function() {
-                const filter = this.value.toLowerCase();
-                const rows = document.querySelectorAll('#dataTable tbody tr');
-                rows.forEach(row => {
-                    const cells = row.querySelectorAll('td');
-                    const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(' ');
-                    row.style.display = rowText.includes(filter) ? '' : 'none';
+            $(document).ready(function () {
+                $('#datatables').DataTable();
+            });
+        </script>
+
+        <!-- Search Filter Script -->
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const searchInput = document.getElementById('searchInput');
+                const table = document.getElementById('datatables');
+                const rows = table.querySelectorAll('tbody tr');
+
+                searchInput.addEventListener('input', () => {
+                    const filter = searchInput.value.toLowerCase();
+
+                    rows.forEach(row => {
+                        const cells = row.querySelectorAll('td');
+                        let match = false;
+
+                        cells.forEach(cell => {
+                            if (cell.textContent.toLowerCase().includes(filter)) {
+                                match = true;
+                            }
+                        });
+
+                        row.style.display = match ? '' : 'none';
+                    });
                 });
             });
         </script>

@@ -13,18 +13,22 @@ return new class extends Migration
     {
         Schema::create('wajib_retribusi', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_user');
-            $table->string('nama', 50);
-            $table->string('no_hp', 16);
-            $table->string('nik', 16);
-            $table->text('alamat');
+            $table->string('nama');
+            $table->string('no_hp');
+            $table->string('nik')->unique();
+            $table->string('alamat');
             $table->unsignedBigInteger('id_kelurahan');
-            $table->char('status', 1);
+            $table->enum('status', ['A', 'B']);
+            $table->string('id_user');
             $table->timestamps();
 
-            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_kelurahan')->references('id')->on('kelurahan')->onDelete('cascade');
         });
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('id_wajib_retribusi')->nullable();
+            $table->foreign('id_wajib_retribusi')->references('id')->on('wajib_retribusi')->onDelete('cascade');
+        });
+
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Models\Kapal;
 use App\Models\RefJenisKapal;
 use App\Models\WajibRetribusi;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class KapalWajibController extends Controller
 {
@@ -15,7 +16,7 @@ class KapalWajibController extends Controller
      */
     public function index()
     {
-        $kapal = Kapal::with('wajibRetribusi')->get();
+        $kapal = Kapal::where('id_user',auth()->user()->id)->get();
         return view('Admin.KapalKu', compact('kapal'));
     }
 
@@ -26,7 +27,7 @@ class KapalWajibController extends Controller
     {
         $jeniskapal = RefJenisKapal::all();
         $pemilikKapal = WajibRetribusi::all();
-        return view('Admin.Kapal.create', compact('jeniskapal','pemilikKapal'));
+        return view('Admin.kapal.create', compact('jeniskapal','pemilikKapal'));
     }
 
     /**
@@ -38,21 +39,15 @@ class KapalWajibController extends Controller
         'nama_kapal' => 'required|string|max:50',
         'id_jenis_kapal' => 'required|exists:ref_jenis_kapal,id',
         'ukuran' => 'required|string|max:50',
-        'id_wajib_retribusi' => 'required|exists:wajib_retribusi,id',
     ]);
-
-    $wajibRetribusi = WajibRetribusi::find($request->id_wajib_retribusi);
 
     Kapal::create([
-        'id_user' => auth()->id(),
-        'id_wajib_retribusi' => $wajibRetribusi->id,
-        'nama_pemilik' => $wajibRetribusi->nama,
-        'nama_kapal' => $request->nama_kapal,
-        'id_jenis_kapal' => $request->id_jenis_kapal,
-        'ukuran' => $request->ukuran,
+        'id_user'               => Auth::user()->id,
+        'id_wajib_retribusi'    => $request->id_wajib_retribusi,
+        'nama_kapal'            => $request->nama_kapal,
+        'id_jenis_kapal'        => $request->id_jenis_kapal,
+        'ukuran'                => $request->ukuran,
     ]);
-
-
 
     return redirect()->route('kapalku.index')->with('success', 'Data kapal berhasil ditambahkan.');
 }

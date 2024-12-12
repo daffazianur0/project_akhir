@@ -22,7 +22,7 @@ class KonfirmasiPembayaranController extends Controller
     {
         $request->validate([
             'id_ref_bank' => 'required|exists:ref_bank,id',
-            'nominal_transfer' => 'required|numeric',
+            
             'id_ms_rekening' => 'required|exists:ms_rekening,id',
             'file_bukti' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
@@ -57,46 +57,52 @@ class KonfirmasiPembayaranController extends Controller
 }
 public function store(Request $request)
 {
-    // dd($request->all()); // Debug request data
+
 
     $request->validate([
         'id_ref_bank' => 'required|exists:ref_bank,id',
-        'nominal_transfer' => 'required|numeric',
       'id_ms_rekening' => 'required|exists:ms_rekening,id',
         'file_bukti' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
     ]);
+    $rekening = MSrekening::where('id',$request->id_ms_rekening)->first();
 
-    // Lanjutkan dengan logika penyimpanan...
-
-
-
-    // Ambil user yang sedang login
-    $user = auth()->user();
-
-    // Cari rekening berdasarkan ID
-    $msRekening = MsRekening::find($request->id_ms_rekening);
-
-    if (!$msRekening) {
+    if (!$rekening) {
         return back()->withErrors(['id_ms_rekening' => 'Rekening tidak ditemukan.']);
     }
 
     // Simpan file bukti pembayaran
     $filePath = $request->file('file_bukti')->store('bukti_pembayaran', 'public');
 
-    // Simpan data konfirmasi pembayaran ke database
-    $konfirmasiBayar = new Konfirmasibayar();
-    $konfirmasiBayar->id_user = $user->id;
-    $konfirmasiBayar->id_ms_rekening = $request->id_ms_rekening;
-    $konfirmasiBayar->file_bukti = $filePath;
-    $konfirmasiBayar->tgl_bayar = now();
-    $konfirmasiBayar->nama_rekening = $msRekening->nama_akun;
-    $konfirmasiBayar->id_ref_bank = $request->id_ref_bank;
-    $konfirmasiBayar->no_rekening = $msRekening->no_rekening;
-    $konfirmasiBayar->status = 'P'; // 'P' untuk status Pending
+        $pembayaran = new KonfirmasiBayar();
+        $pembayaran->id_user = auth()->user()->id;
+        $pembayaran->id_ref_bank = $request->id_ref_bank;
+        $pembayaran->id_ms_rekening = $request->id_ms_rekening;
+        $pembayaran->file_bukti = $filePath;
+        $pembayaran->tgl_bayar = now();
+        $pembayaran->nama_rekening = $rekening->nama_akun;
+        $pembayaran->no_rekening = $rekening->no_rekening;
+        $pembayaran->status = 'P';
+        $pembayaran->save();
+
+        return back()->withSuccess('Data berhasil ditambahkan');
+}
+
+public function updateStatus(Request $request, $id)
+{
+    $validatedStatus = $request->validate([
+        'status' => 'required|in:sesuai,tidak_sesuai',
+    ]);
+
+    $konfirmasiBayar = KonfirmasiBayar::findOrFail($id);
+
+    $konfirmasiBayar->status = $validatedStatus['status'] === 'sesuai' ? 'Y' : 'N';
+    $konfirmasiBayar->tindaklanjut_tgl = now();
+    $konfirmasiBayar->tindaklanjut_user = 'Admin';
     $konfirmasiBayar->save();
 
-    // Redirect ke halaman konfirmasi dengan pesan sukses
-    return redirect()->route('KonfirmasiPembayaran.index')->with('success', 'Terima kasih telah membayar retribusi. Mohon tunggu konfirmasi dari admin.');
+    return redirect()->back()->with('success', 'Status berhasil diperbarui.');
+}
 }
 
-}
+
+

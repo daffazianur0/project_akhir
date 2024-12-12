@@ -36,22 +36,7 @@
                                 <meta name="viewport" content="width=device-width, initial-scale=1.0">
                                 <title>User Profile Form</title>
                                 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-                                {{-- <style>
-                                    .form-container {
-                                        max-width: 600px;
-                                        margin: 20px auto;
-                                        padding: 20px;
-                                        border: 1px solid #ccc;
-                                        border-radius: 8px;
-                                        background-color: #f8f9fa;
-                                    }
-                                    .form-group label {
-                                        font-weight: bold;
-                                    }
-                                    .form-control {
-                                        background-color: #e2edf7;
-                                    }
-                                </style> --}}
+                                
                             </head>
                             <body>
 

@@ -113,7 +113,7 @@
 
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('wajib.index') }}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('kapalku1.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-ship"></i>
               </span>

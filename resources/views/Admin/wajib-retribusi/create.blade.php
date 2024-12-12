@@ -27,7 +27,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Nama Lengkap</label>
                         <div class="col-sm-9">
-                            <input type="text" name="nama" class="form-control" value="{{ old('nama') }}">
+                            <input type="text" name="nama" class="form-control" value="{{ old('nama') }}" required>
                             @error('nama')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -38,11 +38,10 @@
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Telepon</label>
                         <div class="col-sm-9">
-                            <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp') }}">
-                            @if ($errors->has('no_hp'))
-                            <span class="text-danger">{{ $errors->first('no_hp') }}</span>
-                        @endif
-
+                            <input type="text" name="no_hp" class="form-control" value="{{ old('no_hp') }}" required>
+                            @error('no_hp')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
@@ -50,7 +49,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">NIK</label>
                         <div class="col-sm-9">
-                            <input type="text" name="nik" class="form-control" value="{{ old('nik') }}">
+                            <input type="text" name="nik" class="form-control" value="{{ old('nik') }}" required>
                             @error('nik')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -61,7 +60,7 @@
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label">Alamat</label>
                         <div class="col-sm-9">
-                            <input type="text" name="alamat" class="form-control" value="{{ old('alamat') }}">
+                            <input type="text" name="alamat" class="form-control" value="{{ old('alamat') }}" required>
                             @error('alamat')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
@@ -72,85 +71,74 @@
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label" for="id_kelurahan">Kelurahan</label>
                         <div class="col-sm-9">
-                            <select name="id_kelurahan" id="id_kelurahan" class="form-select">
+                            <select name="id_kelurahan" id="id_kelurahan" class="form-select" required>
+                                <option value="">-- Pilih Kelurahan --</option>
                                 @foreach ($kelurahan as $data)
                                     <option value="{{ $data->id }}" {{ old('id_kelurahan') == $data->id ? 'selected' : '' }}>
                                         {{ $data->nama_kelurahan }}
                                     </option>
                                 @endforeach
                             </select>
+                            @error('id_kelurahan')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
-
 
                     <!-- Status -->
                     <div class="row mb-3">
                         <label class="col-sm-3 col-form-label" for="status">Status</label>
                         <div class="col-sm-9">
-                            <select name="status" id="status" class="form-select">
+                            <select name="status" id="status" class="form-select" required>
                                 <option value="">-- Pilih Status --</option>
                                 <option value="A" {{ old('status') == 'A' ? 'selected' : '' }}>A - Aktif</option>
                                 <option value="B" {{ old('status') == 'B' ? 'selected' : '' }}>B - Tidak Aktif</option>
                             </select>
+                            @error('status')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
-
-
-
-                    <h5 class="fw-bold mt-5">Akun Wajib Retribusi</h5>
-
+                    <div class="col">
+                        <div class="card profile-card">
+                            <div class="card-body">
+                                <h5 class="card-title">akun Wajib Retribusi</h5>
                     <!-- Username -->
                     <div class="row mt-3">
-                        <div class="col-md-3">
-                            <label for="name"><b>Username</b></label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name"
-                                value="{{ old('name') }}">
-                            <div class="invalid-feedback">
-                                @error('name')
-                                    {{ $message }}
-                                @enderror
-                            </div>
+                        <label class="col-sm-3 col-form-label"><b>Username</b></label>
+                        <div class="col-sm-9">
+                            <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                            @error('name')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
                     <!-- Email -->
                     <div class="row mt-3">
-                        <div class="col-md-3">
-                            <label for="email"><b>Email</b></label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control @error('email') is-invalid @enderror" name="email"
-                                value="{{ old('email') }}">
-                            <div class="invalid-feedback">
-                                @error('email')
-                                    {{ $message }}
-                                @enderror
-                            </div>
+                        <label class="col-sm-3 col-form-label"><b>Email</b></label>
+                        <div class="col-sm-9">
+                            <input type="email" name="email" class="form-control" value="{{ old('email') }}" required>
+                            @error('email')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
                     <!-- Password -->
                     <div class="row mt-3">
-                        <div class="col-md-3">
-                            <label for="password"><b>Password</b></label>
-                        </div>
-                        <div class="col-md-9">
-                            <input type="text" class="form-control @error('password') is-invalid @enderror"
-                                name="password" value="{{ old('password') }}">
-                            <div class="invalid-feedback">
-                                @error('password')
-                                    {{ $message }}
-                                @enderror
-                            </div>
+                        <label class="col-sm-3 col-form-label"><b>Password</b></label>
+                        <div class="col-sm-9">
+                            <input type="password" name="password" class="form-control" value="{{ old('password') }}" required>
+                            @error('password')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 
-                    <!-- Buttons -->
-                    <div class="card-footer text-end">
-                        <a class="btn btn-secondary btn-sm" href="{{ route('wajib.index') }}">Kembali</a>
-                        <button class="btn btn-primary btn-sm">Simpan Data</button>
+                    <!-- Submit -->
+                    <div class="text-end mt-3">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                     </div>
                 </form>
             </div>

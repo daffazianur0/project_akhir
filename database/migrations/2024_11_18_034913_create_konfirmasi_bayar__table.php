@@ -21,6 +21,7 @@ return new class extends Migration
                 $table->string('file_bukti',);
                 $table->date('tgl_bayar',);
                 $table->char('status',)->default('p');
+                
                 $table->timestamp('tindaklanjut_tgl')->nullable();
                 $table->string('tindaklanjut_user', 30)->nullable();
                 $table->timestamps();
@@ -38,7 +39,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('konfirmasi_bayar_');
+        Schema::dropIfExists('konfirmasi_bayar_id');
     }
 
 

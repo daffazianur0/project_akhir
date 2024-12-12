@@ -34,10 +34,10 @@
                                     @if (auth()->user()->level == 'admin')
                                     <a href="{{ route('kategori.create') }}" class="btn btn-primary">Tambah Data</a>
                                     @endif
-                                    <input type="text" id="searchInput" class="form-control w-25" placeholder="Cari...">
+                                    
                                 </div>
-                                <table class="table table-border mt-2" id="dataTable">
-                                    <thead>
+                                <table class="table table-border" id="datatables">
+                                    <thead class="table-light">
                                         <tr class="border-2 border-bottom border-primary border-0">
                                             <th style="width: 50px;">No.</th>
                                             <th><center>Kategori Retribusi</center></th>
@@ -79,12 +79,33 @@
 
     <!-- Script untuk fitur search -->
     <script>
-        document.getElementById('searchInput').addEventListener('keyup', function() {
-            const filter = this.value.toLowerCase();
-            const rows = document.querySelectorAll('#dataTable tbody tr');
-            rows.forEach(row => {
-                const rowText = row.textContent.toLowerCase();
-                row.style.display = rowText.includes(filter) ? '' : 'none';
+        $(document).ready(function () {
+            $('#datatables').DataTable();
+        });
+    </script>
+
+    <!-- Search Filter Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const table = document.getElementById('datatables');
+            const rows = table.querySelectorAll('tbody tr');
+
+            searchInput.addEventListener('input', () => {
+                const filter = searchInput.value.toLowerCase();
+
+                rows.forEach(row => {
+                    const cells = row.querySelectorAll('td');
+                    let match = false;
+
+                    cells.forEach(cell => {
+                        if (cell.textContent.toLowerCase().includes(filter)) {
+                            match = true;
+                        }
+                    });
+
+                    row.style.display = match ? '' : 'none';
+                });
             });
         });
     </script>

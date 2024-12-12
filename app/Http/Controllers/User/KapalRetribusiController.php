@@ -11,8 +11,10 @@ class KapalRetribusiController extends Controller
 {
     public function index()
     {
-        $kapals = Kapal::with(['user', 'jenisKapal'])->get();
+        
+        $kapals = Kapal::with(['user', 'jenisKapal']);
         return view('User.KapalRetribusi', compact('kapals'));
     }
+
 
 }

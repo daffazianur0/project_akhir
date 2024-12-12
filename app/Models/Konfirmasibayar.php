@@ -23,6 +23,7 @@ class KonfirmasiBayar extends Model
         'id_ref_bank',
         'no_rekening',
         'status',
+        'nominal_transfer',
         'tindaklanjut_tgl',
         'tindaklanjut_user',
     ];

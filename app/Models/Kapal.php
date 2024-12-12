@@ -10,7 +10,7 @@ class Kapal extends Model
     use HasFactory;
 
     protected $table = 'kapal';
-    protected $fillable = ['id_user', 'id_wajib_retribusi', 'nama_pemilik', 'nama_kapal', 'id_jenis_kapal', 'ukuran'];
+    protected $fillable = ['id_user', 'id_wajib_retribusi', 'nama_kapal', 'id_jenis_kapal', 'ukuran','konfirmasi_bayar_id'];
 
 
 
@@ -23,8 +23,8 @@ class Kapal extends Model
         return $this->belongsTo(User::class, 'id_user');
     }
     public function wajibRetribusi()
-{
-    return $this->belongsTo(WajibRetribusi::class, 'id_wajib_retribusi');
-}
+    {
+        return $this->belongsTo(WajibRetribusi::class, 'id_wajib_retribusi');
+    }
 
 }

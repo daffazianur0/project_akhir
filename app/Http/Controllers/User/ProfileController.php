@@ -32,6 +32,7 @@ class ProfileController extends Controller
 
         $Wajib_retribusi = $user->Wajib_retribusi;
 
+        if ($Wajib_retribusi && $Wajib_retribusi->isNotEmpty()) {
         foreach ($Wajib_retribusi as $wajib) {
             $wajib->nik = $request->input('nik');
             $wajib->nama = $request->input('namaLengkap');
@@ -42,7 +43,7 @@ class ProfileController extends Controller
 
         return redirect()->route('Profile.index')->with('success', 'Profil berhasil diperbarui!');
 }
-
+    }
 public function updatePassword(Request $request)
 {
     $request->validate([

@@ -34,7 +34,12 @@ class User extends Authenticatable
 
     public function wajibRetribusi()
     {
-        return $this->hasMany(wajibRetribusi::class, 'id_user');
+        return $this->hasMany(WajibRetribusi::class, 'id_user', 'id');
+    }
+
+    public function kapal()
+    {
+        return $this->hasMany(Kapal::class, 'id_user');
     }
 }
 

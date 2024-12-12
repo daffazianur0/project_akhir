@@ -24,9 +24,13 @@ class wajibRetribusi extends Model
     public function user()
     {
         return $this->belongsTo(User::class, 'id_user');
-}
+    }
     public function kelurahan()
     {
         return $this->belongsTo(Kelurahan::class, 'id_kelurahan');
+    }
+    public function kapal()
+    {
+        return $this->hasMany(Kapal::class, 'id_wajib_retribusi');
     }
 }
