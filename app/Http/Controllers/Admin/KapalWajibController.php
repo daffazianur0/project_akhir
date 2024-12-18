@@ -25,7 +25,7 @@ class KapalWajibController extends Controller
      */
     public function create()
     {
-        $jeniskapal = RefJenisKapal::all();
+        $jeniskapal = RefJenisKapal::all(); 
         $pemilikKapal = WajibRetribusi::all();
         return view('Admin.kapal.create', compact('jeniskapal','pemilikKapal'));
     }

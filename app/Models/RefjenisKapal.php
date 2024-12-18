@@ -16,4 +16,9 @@ class RefjenisKapal extends Model
     {
         return $this->hasMany(RefjenisKapal::class, 'id_jenis_kapal');
     }
+    public function wajibRetribusis()
+{
+    return $this->hasMany(wajibRetribusi::class, 'id_jenis_kapal');
+}
+
 }

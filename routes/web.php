@@ -126,11 +126,18 @@ Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
     route::resource('KonfirmasiPembayaran',KonfirmasiPembayaranController::class);
     Route::post('/konfirmasi/confirm', [KonfirmasiPembayaranController::class, 'confirm'])->name('konfirmasi.confirm');
     Route::put('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('Profile.updatePassword');
-    Route::post('/update-status/{id}', [PembayaranController::class, 'updateStatus'])->name('konfirmasi-bayar.update-status');
+    Route::post('/konfirmasi-bayar/{id}/update-status', [KonfirmasiPembayaranController::class, 'updateStatus'])->name('Konfirmasibayar.update-status');
+    Route::get('/KapalRetribusi', [KapalRetribusiController::class, 'index'])->name('KapalRetribusi.index');
+
 
 
 
 });
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/kapalku1', [Kapalku1Controller::class, 'index'])->name('kapalku1.index');
+});
+
 
 
 Route::group(['middleware' => ['auth','ceklevel:karyawan']], function () {

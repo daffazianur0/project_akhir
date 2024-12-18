@@ -10,13 +10,11 @@ class Kapalku1Controller extends Controller
 {
     public function index()
     {
+        $userId = auth()->user()->id;
+        $kapals = Kapal::where('id_user', $userId)->get();
 
-    // Mengambil data kapal beserta relasi jenis kapal
-    $kapals = Kapal::with('jenisKapal')->get();
-
-    // Mengirim variabel $kapals ke view
-    return view('User.kapalku1', compact('kapals'));
-}
+        return view('User.kapalku1', compact('kapals'));
+    }
 
     }
 

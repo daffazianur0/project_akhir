@@ -30,8 +30,7 @@
                                 @if (auth()->user()->level == 'admin')
                                     <div class="d-flex justify-content-between mb-2">
                                         <a href="{{ route('kapalku.create') }}" class="btn btn-primary">Tambah Data</a>
-                                        <input type="text" id="searchInput" class="form-control w-25"
-                                            placeholder="Cari...">
+
                                     </div>
                                 @endif
                                 <div class="table-responsive table-bordered">

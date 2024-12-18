@@ -63,22 +63,24 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">{{ $data->created_at->format('d-m-Y') }}</td>
-                                            <td class="text-center">{{ $data->tanggal_tindak_lanjut ?? 'Belum Ditindak' }}</td>
-                                            <td class="text-center">{{ $data->tindak_lanjut_user ?? 'Belum Ada' }}</td>
+                                            <td class="text-center">{{ $data->tindaklanjut_tgl }}</td>
+                                            <td class="text-center">{{ $data->tindaklanjut_user }}</td>
                                             <td class="text-center">
                                                 @if ($data->status === 'Y')
                                                 <span class="badge bg-success">Sesuai</span>
                                                 @elseif ($data->status === 'N')
                                                 <span class="badge bg-danger">Tidak Sesuai</span>
                                                 @else
-                                                <form action="{{ route('Konfirmasibayar.update-status', $data->id) }}" method="POST"
-                                                    class="d-flex justify-content-start">
+                                                <form action="{{ route('Konfirmasibayar.update-status', $data->id) }}" method="POST" class="d-flex justify-content-start">
                                                     @csrf
-                                                    <button type="submit" name="status" value="sesuai"
-                                                        class="btn btn-success btn-sm me-2">Sesuai</button>
-                                                    <button type="submit" name="status" value="tidak_sesuai"
-                                                        class="btn btn-danger btn-sm">Tidak Sesuai</button>
+                                                    <button type="submit" name="status" value="sesuai" class="btn btn-success btn-sm me-2">
+                                                        Sesuai
+                                                    </button>
+                                                    <button type="submit" name="status" value="tidak_sesuai" class="btn btn-danger btn-sm">
+                                                        Tidak Sesuai
+                                                    </button>
                                                 </form>
+
                                                 @endif
                                             </td>
                                         </tr>

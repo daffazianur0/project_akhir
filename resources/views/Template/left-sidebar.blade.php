@@ -10,8 +10,7 @@
           </div>
         </div>
       <!-- Sidebar navigation-->
-      <nav class="sidebar-nav scroll-sidebar" data-simplebar="
-      ">
+      <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
         <ul id="sidebarnav">
             @if (auth()->user()->level == "admin")
           {{-- <li class="nav-small-cap">

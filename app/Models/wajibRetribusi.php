@@ -33,4 +33,9 @@ class wajibRetribusi extends Model
     {
         return $this->hasMany(Kapal::class, 'id_wajib_retribusi');
     }
+    public function jenisKapal()
+{
+    return $this->belongsTo(RefjenisKapal::class, 'id_jenis_kapal'); // Pastikan nama kolom foreign key benar
+}
+
 }

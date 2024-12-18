@@ -52,13 +52,10 @@
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $kapal->nama_kapal }}</td>
-                                            <td>Rp
-                                                {{ number_format($kapal->jenisKapal->biaya_retribusi, 0, ',', '.') ?? 'Tidak ada biaya' }}
-                                            </td>
+                                            <td>Rp {{ number_format($kapal->jenisKapal->biaya_retribusi ?? 0, 0, ',', '.') }}</td>
                                             <td>{{ $kapal->created_at->format('d F Y') }}</td>
-
                                         </tr>
-                                        @endforeach
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

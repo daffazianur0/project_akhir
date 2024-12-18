@@ -21,23 +21,6 @@ class PembayaranController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function updateStatus(Request $request, $id)
-{
-    $validated = $request->validate([
-        'status' => 'required|in:sesuai,tidak_sesuai',
-    ]);
-
-    $konfirmasiBayar = KonfirmasiBayar::findOrFail($id);
-
-    $konfirmasiBayar->status = $validated['status'] === 'sesuai' ? 'Y' : 'N';
-    $konfirmasiBayar->tindaklanjut_tgl = now();
-    $konfirmasiBayar->tindaklanjut_user = 'Admin';
-    
-    $konfirmasiBayar->save();
-
-    return redirect()->back()->with('success', 'Status berhasil diperbarui.');
-}
-
     public function store(Request $request)
     {
         //

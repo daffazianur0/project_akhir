@@ -27,4 +27,5 @@ class Kapal extends Model
         return $this->belongsTo(WajibRetribusi::class, 'id_wajib_retribusi');
     }
 
+
 }

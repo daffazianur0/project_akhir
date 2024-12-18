@@ -22,7 +22,7 @@ class KonfirmasiPembayaranController extends Controller
     {
         $request->validate([
             'id_ref_bank' => 'required|exists:ref_bank,id',
-            
+
             'id_ms_rekening' => 'required|exists:ms_rekening,id',
             'file_bukti' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
@@ -95,14 +95,18 @@ public function updateStatus(Request $request, $id)
 
     $konfirmasiBayar = KonfirmasiBayar::findOrFail($id);
 
+
     $konfirmasiBayar->status = $validatedStatus['status'] === 'sesuai' ? 'Y' : 'N';
     $konfirmasiBayar->tindaklanjut_tgl = now();
     $konfirmasiBayar->tindaklanjut_user = 'Admin';
     $konfirmasiBayar->save();
 
-    return redirect()->back()->with('success', 'Status berhasil diperbarui.');
+
+    $kapals = wajibRetribusi::all();
+
+    return redirect()->route('KapalRetribusi.index')->with([
+        'success' => 'Status berhasil diperbarui.',
+        'kapals' => $kapals
+    ]);
 }
 }
-
-
-
