@@ -57,7 +57,7 @@ public function updatePassword(Request $request)
         return redirect()->back()->withErrors(['passwordLama' => 'Password lama tidak sesuai.']);
     }
 
-    // Simpan password baru
+
     $user->password = \Hash::make($request->passwordBaru);
     $user->save();
 

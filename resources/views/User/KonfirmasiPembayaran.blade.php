@@ -85,7 +85,8 @@
                                     <div class="row mb-3">
                                         <label for="file_bukti" class="col-sm-3 col-form-label">Bukti Pembayaran</label>
                                         <div class="col-sm-9">
-                                            <input type="file" name="file_bukti" class="form-control" accept=".jpg,.jpeg,.png,.pdf" required>
+                                            <input type="file" name="file_bukti" class="form-control" accept="image/jpg,image/jpeg,image/png,image/pdf" required>
+                                            <small>file harus berformat JPG,JPEG,PNG</small>
                                         </div>
                                     </div>
 

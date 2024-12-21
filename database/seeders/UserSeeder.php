@@ -20,7 +20,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin Aplikasi',
             'level' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => bcrypt('12345'),
+            'password' => bcrypt('admin123'),
             'remember_token' => Str::random(60),
         ]);
         User::create([

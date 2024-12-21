@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Kapal;
 use Illuminate\Http\Request;
 use App\Models\MsRekening;
 use App\Models\Konfirmasibayar;
@@ -81,6 +82,7 @@ public function store(Request $request)
         $pembayaran->tgl_bayar = now();
         $pembayaran->nama_rekening = $rekening->nama_akun;
         $pembayaran->no_rekening = $rekening->no_rekening;
+        $pembayaran->nominal_transfer = $request->nominal_transfer;
         $pembayaran->status = 'P';
         $pembayaran->save();
 
@@ -89,22 +91,34 @@ public function store(Request $request)
 
 public function updateStatus(Request $request, $id)
 {
-    $validatedStatus = $request->validate([
-        'status' => 'required|in:sesuai,tidak_sesuai',
+    $validated = $request->validate([
+        'status' => 'required',
     ]);
 
-    $konfirmasiBayar = KonfirmasiBayar::findOrFail($id);
+    $konfirmasiBayar = Konfirmasibayar::findOrFail($id);
 
+    $status = $request->status;
 
-    $konfirmasiBayar->status = $validatedStatus['status'] === 'sesuai' ? 'Y' : 'N';
+    $konfirmasiBayar->status = $status;
     $konfirmasiBayar->tindaklanjut_tgl = now();
     $konfirmasiBayar->tindaklanjut_user = 'Admin';
     $konfirmasiBayar->save();
 
-
     $kapals = wajibRetribusi::all();
 
-    return redirect()->route('KapalRetribusi.index')->with([
+    if($status == 'Y'){
+        $kapal = Kapal::where('id_user',$konfirmasiBayar->id_user)->whereNull('konfirmasi_bayar_id');
+        $kapal->update([
+            'konfirmasi_bayar_id' => $konfirmasiBayar->id
+        ]);
+    }else{
+        $kapal = Kapal::where('id_user',$konfirmasiBayar->id_user)->whereNotNull('konfirmasi_bayar_id');
+        $kapal->update([
+            'konfirmasi_bayar_id' => null
+        ]);
+    }
+
+    return redirect()->route('pembayaran.index')->with([
         'success' => 'Status berhasil diperbarui.',
         'kapals' => $kapals
     ]);

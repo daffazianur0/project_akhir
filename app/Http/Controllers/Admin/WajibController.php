@@ -114,7 +114,7 @@ class WajibController extends Controller
         ], [
             'nama.required' => 'Nama lengkap wajib diisi.',
             'no_hp.required' => 'Nomor telepon sudah digunakan.',
-            'no_hp.unique' => 'Nomor telepon sudah digunakan.', // Tambahkan pesan error untuk unique
+            'no_hp.unique' => 'Nomor telepon sudah digunakan.', 
             'nik.required' => 'NIK wajib diisi.',
             'alamat.required' => 'Alamat wajib diisi.',
             'id_kelurahan.required' => 'Kelurahan wajib dipilih.',
@@ -146,5 +146,5 @@ class WajibController extends Controller
         $wajibretribusi->delete();
         return redirect()->route('wajib.index')->with('success', 'Data wajib retribusi berhasil dihapus.');
     }
-    
+
 }

@@ -45,6 +45,7 @@
                                             <th class="text-center">Tanggal Bayar</th>
                                             <th class="text-center">Tanggal Tindak Lanjut</th>
                                             <th class="text-center">Tindak Lanjut User</th>
+                                            <th style="width: 150px;" class="text-center">status</th>
                                             <th style="width: 150px;" class="text-center">Aksi</th>
                                         </tr>
                                     </thead>
@@ -65,23 +66,27 @@
                                             <td class="text-center">{{ $data->created_at->format('d-m-Y') }}</td>
                                             <td class="text-center">{{ $data->tindaklanjut_tgl }}</td>
                                             <td class="text-center">{{ $data->tindaklanjut_user }}</td>
+                                            <td class="text-center"><span
+                                                class="badge {{ $data->status == 'Y' ? 'bg-success' : ($data->status == 'N' ? 'bg-danger' : 'bg-warning') }}">
+                                                {{ $data->status == 'Y' ? 'Sesuai' : ($data->status == 'N' ? 'Tidak Sesuai' : 'Menunggu divalidasi') }}
+                                            </span>
+                                        </td>
                                             <td class="text-center">
-                                                @if ($data->status === 'Y')
-                                                <span class="badge bg-success">Sesuai</span>
-                                                @elseif ($data->status === 'N')
-                                                <span class="badge bg-danger">Tidak Sesuai</span>
-                                                @else
-                                                <form action="{{ route('Konfirmasibayar.update-status', $data->id) }}" method="POST" class="d-flex justify-content-start">
+                                                <form action="{{ route('Konfirmasibayar.update-status', $data->id) }}"
+                                                    method="POST" class="d-flex justify-content-center">
                                                     @csrf
-                                                    <button type="submit" name="status" value="sesuai" class="btn btn-success btn-sm me-2">
-                                                        Sesuai
-                                                    </button>
-                                                    <button type="submit" name="status" value="tidak_sesuai" class="btn btn-danger btn-sm">
-                                                        Tidak Sesuai
-                                                    </button>
+                                                    @if ($data->status == 'P' || $data->status == 'N')
+                                                        <button type="submit" name="status" value="Y"
+                                                            class="btn btn-sm me-2 btn-success">
+                                                            Sesuai
+                                                        </button>
+                                                    @endif
+                                                    @if ($data->status == 'P' || $data->status == 'Y')
+                                                        <button type="submit" name="status" value="N" class="btn btn-sm btn-danger">
+                                                            Tidak Sesuai
+                                                        </button>
+                                                    @endif
                                                 </form>
-
-                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach

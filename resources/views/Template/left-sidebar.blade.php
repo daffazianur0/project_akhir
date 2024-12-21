@@ -67,27 +67,18 @@
               <span class="hide-menu">pembayaran retribusi</span>
             </a>
 
-          </li>
+         </li>
           <li class="nav-small-cap">
             <i class="ti ti-star"></i>
             <span class="hide-menu">laporan</span>
 
           <li class="sidebar-item">
-            <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+            <a class="sidebar-link" href="{{route('Laporan.index')}}" aria-expanded="false">
               <span>
-                <i class="ti ti-user-plus"></i>
+                <i class=" ti ti-mood-angry"></i>
               </span>
-              <span class="hide-menu">retribusi</span>
+              <span class="hide-menu">Laporan</span>
             </a>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-mood-angry"></i>
-                  </span>
-                  <span class="hide-menu">belum membayar
-                    <p>retribusi</p></span>
-                </a>
-            </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('logout')}}" aria-expanded="false">
                 <span>
@@ -120,7 +111,7 @@
             </a>
           </li>
           <li class="sidebar-item">
-            <a class="sidebar-link" href="{{ route('kapalRetribusi.index') }}" aria-expanded="false">
+            <a class="sidebar-link" href="{{ route('kapalwajibretribusi.index') }}" aria-expanded="false">
               <span>
                 <i class="ti ti-cards"></i>
               </span>
@@ -136,9 +127,18 @@
               <span class="hide-menu">konfirmasi Pembayaran
                    <p> Retribusi</p></span>
             </a>
-          <li class="nav-small-cap">
-            <i class="ti ti-report"></i>
+      
+        <li class="nav-small-cap">
+          <i class="ti ti-star"></i>
+          <span class="hide-menu">laporan</span>
+
+        <li class="sidebar-item">
+          <a class="sidebar-link" href="{{route('Laporan.index')}}" aria-expanded="false">
+            <span>
+              <i class=" ti ti-mood-angry"></i>
+            </span>
             <span class="hide-menu">Laporan</span>
+          </a>
 
           {{-- <li class="sidebar-item">
             <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">

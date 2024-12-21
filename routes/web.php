@@ -13,6 +13,9 @@ use App\Http\Controllers\User\kategoriretribusiController;
 use App\Http\Controllers\Admin\WajibController;
 use App\Http\Controllers\Admin\KapalWajibController;
 use App\Http\Controllers\Admin\PembayaranController;
+use App\Http\Controllers\Admin\LaporanController;
+use App\Http\Controllers\kapalwajibretribusi;
+
 
 
 
@@ -128,8 +131,8 @@ Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
     Route::put('/profile/update-password', [ProfileController::class, 'updatePassword'])->name('Profile.updatePassword');
     Route::post('/konfirmasi-bayar/{id}/update-status', [KonfirmasiPembayaranController::class, 'updateStatus'])->name('Konfirmasibayar.update-status');
     Route::get('/KapalRetribusi', [KapalRetribusiController::class, 'index'])->name('KapalRetribusi.index');
-
-
+    Route::get('/Laporan', [Laporancontroller::class, 'index'])->name('Laporan.index');
+    route::resource('/kapalwajibretribusi',kapalwajibretribusi::class);
 
 
 });
