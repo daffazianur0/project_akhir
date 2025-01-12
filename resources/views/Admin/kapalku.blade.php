@@ -54,7 +54,7 @@
                                                     <td scope="col" class="text-center">{{ $index + 1 }}.</td>
                                                     <td scope="col" class="text-center">{{ $data->wajibRetribusi->nama ?? 'N/A' }}</td>
                                                     <td scope="col" class="text-center">{{ $data->nama_kapal }}</td>
-                                                    <td scope="col" class="text-center">{{ $data->jenisKapal->jenis_kapal ?? 'N/A' }}</td>
+                                                    <td scope="col" class="text-center">{{ $data->jenisKapal->jenis_kapal}}</td>
                                                     <td scope="col" class="text-center">{{ $data->ukuran }}</td>
 
                                                     @if (auth()->user()->level == 'admin')

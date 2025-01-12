@@ -52,27 +52,25 @@ class KonfirmasiPembayaranController extends Controller
         return redirect()->route('konfirmasi.index')->with('success', 'Terima kasih telah membayar retribusi. Mohon tunggu konfirmasi dari admin.');
     }
     public function create()
-{
-    // Logic untuk menampilkan halaman form pembuatan data
-    return view('User.konfirmasi');
-}
-public function store(Request $request)
-{
-
-
-    $request->validate([
-        'id_ref_bank' => 'required|exists:ref_bank,id',
-      'id_ms_rekening' => 'required|exists:ms_rekening,id',
-        'file_bukti' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
-    ]);
-    $rekening = MSrekening::where('id',$request->id_ms_rekening)->first();
-
-    if (!$rekening) {
-        return back()->withErrors(['id_ms_rekening' => 'Rekening tidak ditemukan.']);
+    {
+        return view('User.konfirmasi');
     }
+    public function store(Request $request)
+    {
 
-    // Simpan file bukti pembayaran
-    $filePath = $request->file('file_bukti')->store('bukti_pembayaran', 'public');
+        $request->validate([
+            'id_ref_bank' => 'required|exists:ref_bank,id',
+            'id_ms_rekening' => 'required|exists:ms_rekening,id',
+            'file_bukti' => 'required|file|mimes:jpg,jpeg,png,pdf|max:2048',
+        ]);
+        $rekening = MSrekening::where('id', $request->id_ms_rekening)->first();
+
+        if (!$rekening) {
+            return back()->withErrors(['id_ms_rekening' => 'Rekening tidak ditemukan.']);
+        }
+
+        // Simpan file bukti pembayaran
+        $filePath = $request->file('file_bukti')->store('bukti_pembayaran', 'public');
 
         $pembayaran = new KonfirmasiBayar();
         $pembayaran->id_user = auth()->user()->id;
@@ -84,43 +82,49 @@ public function store(Request $request)
         $pembayaran->no_rekening = $rekening->no_rekening;
         $pembayaran->nominal_transfer = $request->nominal_transfer;
         $pembayaran->status = 'P';
+        $pembayaran->kapal_id = $request->kapal;
         $pembayaran->save();
 
+        $kapal = Kapal::findOrFail($request->kapal);
+        $kapal->update([
+            'konfirmasi_bayar_id' => $request->kapal
+        ]);
+
         return back()->withSuccess('Data berhasil ditambahkan');
-}
-
-public function updateStatus(Request $request, $id)
-{
-    $validated = $request->validate([
-        'status' => 'required',
-    ]);
-
-    $konfirmasiBayar = Konfirmasibayar::findOrFail($id);
-
-    $status = $request->status;
-
-    $konfirmasiBayar->status = $status;
-    $konfirmasiBayar->tindaklanjut_tgl = now();
-    $konfirmasiBayar->tindaklanjut_user = 'Admin';
-    $konfirmasiBayar->save();
-
-    $kapals = wajibRetribusi::all();
-
-    if($status == 'Y'){
-        $kapal = Kapal::where('id_user',$konfirmasiBayar->id_user)->whereNull('konfirmasi_bayar_id');
-        $kapal->update([
-            'konfirmasi_bayar_id' => $konfirmasiBayar->id
-        ]);
-    }else{
-        $kapal = Kapal::where('id_user',$konfirmasiBayar->id_user)->whereNotNull('konfirmasi_bayar_id');
-        $kapal->update([
-            'konfirmasi_bayar_id' => null
-        ]);
     }
 
-    return redirect()->route('pembayaran.index')->with([
-        'success' => 'Status berhasil diperbarui.',
-        'kapals' => $kapals
-    ]);
-}
+    public function updateStatus(Request $request, $id)
+    {
+        $validated = $request->validate([
+            'status' => 'required',
+        ]);
+
+        $konfirmasiBayar = Konfirmasibayar::findOrFail($id);
+
+        $status = $request->status;
+
+        $konfirmasiBayar->status = $status;
+        $konfirmasiBayar->tindaklanjut_tgl = now();
+        $konfirmasiBayar->tindaklanjut_user = 'Admin';
+        $konfirmasiBayar->save();
+
+        $kapals = wajibRetribusi::all();
+
+        if ($status == 'Y') {
+            $kapal = Kapal::where('id_user', $konfirmasiBayar->id_user)->whereNull('konfirmasi_bayar_id');
+            $kapal->update([
+                'konfirmasi_bayar_id' => $konfirmasiBayar->id
+            ]);
+        } else {
+            $kapal = Kapal::where('id_user', $konfirmasiBayar->id_user)->whereNotNull('konfirmasi_bayar_id');
+            $kapal->update([
+                'konfirmasi_bayar_id' => null
+            ]);
+        }
+
+        return redirect()->route('pembayaran.index')->with([
+            'success' => 'Status berhasil diperbarui.',
+            'kapals' => $kapals
+        ]);
+    }
 }

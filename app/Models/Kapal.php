@@ -26,6 +26,9 @@ class Kapal extends Model
     {
         return $this->belongsTo(Konfirmasibayar::class, 'konfirmasi_bayar_id');
     }
-
+    public function wajibRetribusi()
+    {
+        return $this->belongsTo(WajibRetribusi::class, 'id_wajib_retribusi', 'id');
+    }
 
 }

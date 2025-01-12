@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kapal;
+use App\Models\KonfirmasiBayar;
 use App\Models\RefJenisKapal;
 use App\Models\WajibRetribusi;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class KapalWajibController extends Controller
      */
     public function index()
     {
-        $kapal = Kapal::where('id_user',auth()->user()->id)->get();
+        $kapal = Kapal::where('id_user', auth()->user()->id)->get();
         return view('Admin.KapalKu', compact('kapal'));
     }
 
@@ -27,30 +28,35 @@ class KapalWajibController extends Controller
     {
         $jeniskapal = RefJenisKapal::all();
         $pemilikKapal = WajibRetribusi::all();
-        return view('Admin.kapal.create', compact('jeniskapal','pemilikKapal'));
+        return view('Admin.kapal.create', compact('jeniskapal', 'pemilikKapal'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'nama_kapal' => 'required|string|max:50',
-        'id_jenis_kapal' => 'required|exists:ref_jenis_kapal,id',
-        'ukuran' => 'required|string|max:50',
-    ]);
+    {
+        $request->validate([
+            'nama_kapal' => 'required|string|max:50',
+            'id_jenis_kapal' => 'required|exists:ref_jenis_kapal,id',
+            'ukuran' => 'required|string|max:50',
+        ]);
 
-    Kapal::create([
-        'id_user'               => Auth::user()->id,
-        'id_wajib_retribusi'    => $request->id_wajib_retribusi,
-        'nama_kapal'            => $request->nama_kapal,
-        'id_jenis_kapal'        => $request->id_jenis_kapal,
-        'ukuran'                => $request->ukuran,
-    ]);
+        $kapal = Kapal::create([
+            'id_user'               => Auth::user()->id,
+            'id_wajib_retribusi'    => $request->id_wajib_retribusi,
+            'nama_kapal'            => $request->nama_kapal,
+            'id_jenis_kapal'        => $request->id_jenis_kapal,
+            'ukuran'                => $request->ukuran,
 
-    return redirect()->route('kapalku.index')->with('success', 'Data kapal berhasil ditambahkan.');
-}
+        ]);
+
+        // KonfirmasiBayar::create([
+        //     kapal_id = $kapal->id
+        // ]);
+
+        return redirect()->route('kapalku.index')->with('success', 'Data kapal berhasil ditambahkan.');
+    }
 
 
     /**

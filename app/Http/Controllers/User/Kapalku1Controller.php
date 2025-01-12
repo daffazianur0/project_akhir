@@ -15,6 +15,6 @@ class Kapalku1Controller extends Controller
 
         return view('User.kapalku1', compact('kapals'));
     }
-
+    
     }
 

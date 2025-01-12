@@ -44,7 +44,7 @@ class WajibController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|max:255|',
             'password' => 'required|string|min:8|max:255',
-        ], [
+        ], [ 
             'name.required' => 'Nama lengkap wajib diisi.',
             'no_hp.required' => 'Nomor telepon wajib diisi.',
             'no_hp.required' => 'Nomor telepon maksimal 16.',
@@ -114,7 +114,7 @@ class WajibController extends Controller
         ], [
             'nama.required' => 'Nama lengkap wajib diisi.',
             'no_hp.required' => 'Nomor telepon sudah digunakan.',
-            'no_hp.unique' => 'Nomor telepon sudah digunakan.', 
+            'no_hp.unique' => 'Nomor telepon sudah digunakan.',
             'nik.required' => 'NIK wajib diisi.',
             'alamat.required' => 'Alamat wajib diisi.',
             'id_kelurahan.required' => 'Kelurahan wajib dipilih.',

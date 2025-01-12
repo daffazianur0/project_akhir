@@ -3,22 +3,18 @@
 
 <head>
     @include('Template.head')
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 </head>
 
 <body>
-    <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
-        <!-- Sidebar Start -->
         @include('Template.left-sidebar')
-        <!--  Sidebar End -->
-        <!--  Main wrapper -->
         <div class="body-wrapper">
-            <!--  Header Start -->
             <header class="app-header">
                 @include('Template.navbar')
             </header>
-            <!--  Header End -->
             <div class="container-fluid">
                 <div class="card">
                     <div class="card-header">
@@ -26,7 +22,6 @@
                     </div>
                     <form action="" method="get">
                         @csrf
-
                         <div class="card-body">
                             <div class="row mt-3">
                                 <div class="col-md-3">
@@ -34,11 +29,9 @@
                                 </div>
                                 <div class="col-md-9">
                                     <input type="date" class="form-control @error('tanggal_awal') is-invalid @enderror"
-                                        name="tanggal_awal" value="{{ old('tanggal_awal',now()->startOfMonth()->toDateString()) }}">
+                                        name="tanggal_awal" value="{{ old('tanggal_awal', now()->startOfMonth()->toDateString()) }}">
                                     <div class="invalid-feedback">
-                                        @error('tanggal_awal')
-                                            {{ $message }}
-                                        @enderror
+                                        @error('tanggal_awal') {{ $message }} @enderror
                                     </div>
                                 </div>
                             </div>
@@ -48,11 +41,9 @@
                                 </div>
                                 <div class="col-md-9">
                                     <input type="date" class="form-control @error('tanggal_akhir') is-invalid @enderror"
-                                        name="tanggal_akhir" value="{{ old('tanggal_awal',now()->toDateString()) }}">
+                                        name="tanggal_akhir" value="{{ old('tanggal_awal', now()->toDateString()) }}">
                                     <div class="invalid-feedback">
-                                        @error('tanggal_akhir')
-                                            {{ $message }}
-                                        @enderror
+                                        @error('tanggal_akhir') {{ $message }} @enderror
                                     </div>
                                 </div>
                             </div>
@@ -68,44 +59,31 @@
                             <div class="card-body">
                                 <h5 class="card-title">Laporan Pembayaran Retribusi</h5>
                                 <hr>
-                                <div class="d-flex justify-content-between mb-2">
-                                    <input type="text" id="searchInput" class="form-control w-25"
-                                        placeholder="Cari...">
-                                    <!-- Tombol Cetak -->
-
-                                </div>
                                 <div class="table-responsive table-bordered">
                                     <table class="table text-nowrap align-middle mb-0 table-striped" id="dataTable">
                                         <thead>
-                                            <tr class="border-2 border-bottom border-primary border-0">
-                                                <th scope="col" class="text-center">No.</th>
-                                                <th scope="col" class="text-center">Nama wajib retribusi</th>
-                                                <th scope="col" class="text-center">Tanggal Bayar</th>
-                                                <th scope="col" class="text-center">nominal total retribusi</th>
-                                                <th scope="col" class="text-center">bank</th>
+                                            <tr>
+                                                <th class="text-center">No.</th>
+                                                <th class="text-center">Nama Wajib Retribusi</th>
+                                                <th class="text-center">Tanggal Bayar</th>
+                                                <th class="text-center">Nominal Total Retribusi</th>
+                                                <th class="text-center">Bank</th>
                                             </tr>
                                         </thead>
-                                        <tbody class="table-group-divider">
+                                        <tbody>
                                             @forelse ($pembayaran as $data)
-                                    <tr>
-                                        <td class="text-center">{{ $loop->iteration }}</td>
-                                        <td class="text-center">{{ $data->nama_rekening }}</td>
-                                        <td class="text-center">{{ $data->tgl_bayar }}</td>
-                                        <td class="text-center">
-                                            Rp {{ number_format($data->nominal_transfer, 2, ',', '.') }}
-                                        </td>
-
-
-                                        <td class="text-center">
-                                            {{ $data->refBank->nama_bank }}
-                                        </td>
-
-                                    </tr>
-                                @empty
-                                    <tr>
-                                        <td colspan="9" class="text-center">Tidak ada data pembayaran.</td>
-                                    </tr>
-                                @endforelse
+                                                <tr>
+                                                    <td class="text-center">{{ $loop->iteration }}</td>
+                                                    <td class="text-center">{{ $data->nama_rekening }}</td>
+                                                    <td class="text-center">{{ $data->tgl_bayar }}</td>
+                                                    <td class="text-center">Rp {{ number_format($data->nominal_transfer, 2, ',', '.') }}</td>
+                                                    <td class="text-center">{{ $data->refBank->nama_bank }}</td>
+                                                </tr>
+                                            @empty
+                                                <tr>
+                                                    <td colspan="5" class="text-center">Tidak ada data pembayaran.</td>
+                                                </tr>
+                                            @endforelse
                                         </tbody>
                                     </table>
                                 </div>
@@ -117,6 +95,28 @@
             </div>
         </div>
         @include('Template.script')
+
+        <!-- DataTables JS -->
+        <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#dataTable').DataTable({
+                    language: {
+                        search: "Cari:",
+                        lengthMenu: "Tampilkan _MENU_ entri",
+                        info: "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
+                        infoEmpty: "Tidak ada data tersedia",
+                        zeroRecords: "Tidak ada data ditemukan",
+                        paginate: {
+                            first: "Awal",
+                            last: "Akhir",
+                            next: "Berikutnya",
+                            previous: "Sebelumnya"
+                        }
+                    }
+                });
+            });
+        </script>
         @if (session('success'))
             <script>
                 Swal.fire({
@@ -128,13 +128,7 @@
                 });
             </script>
         @endif
-
-        <!-- Script Cetak -->
-        <script>
-            function printReport() {
-                window.print();
-            }
-        </script>
+    </div>
 </body>
 
 </html>

@@ -127,7 +127,7 @@
               <span class="hide-menu">konfirmasi Pembayaran
                    <p> Retribusi</p></span>
             </a>
-      
+
         <li class="nav-small-cap">
           <i class="ti ti-star"></i>
           <span class="hide-menu">laporan</span>
@@ -139,21 +139,6 @@
             </span>
             <span class="hide-menu">Laporan</span>
           </a>
-
-          {{-- <li class="sidebar-item">
-            <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
-              <span>
-                <i class="ti ti-user-plus"></i>
-              </span>
-              <span class="hide-menu">retribusi</span>
-            </a>
-            <li class="sidebar-item">
-                <a class="sidebar-link" href="./icon-tabler.html" aria-expanded="false">
-                  <span>
-                    <i class="ti ti-mood-angry"></i>
-                  </span>
-                  <span class="hide-menu">belum membayar retribusi</span>
-                </a> --}}
 
             @endif
 

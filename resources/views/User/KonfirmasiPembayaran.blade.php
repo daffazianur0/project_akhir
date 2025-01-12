@@ -43,7 +43,8 @@
                                 @endif
 
                                 <!-- Form Konfirmasi Pembayaran -->
-                                <form action="{{ route('KonfirmasiPembayaran.store') }}" method="POST" enctype="multipart/form-data">
+                                <form action="{{ route('KonfirmasiPembayaran.store') }}" method="POST"
+                                    enctype="multipart/form-data">
                                     @csrf
 
                                     <!-- Jenis Bank -->
@@ -57,23 +58,48 @@
                                             </select>
                                         </div>
                                     </div>
-
-                                    <!-- Nominal Transfer -->
+                                    {{-- @dd(\App\Models\Kapal::where('id_user', auth()->user()->id)->get()) --}}
+                                    <!-- Pilih Kapal -->
                                     <div class="row mb-3">
-                                        <label for="nominal_transfer" class="col-sm-3 col-form-label">Nominal Transfer</label>
+                                        <label for="kapal" class="col-sm-3 col-form-label">Pilih Kapal</label>
                                         <div class="col-sm-9">
-                                            <input type="number" id="nominal_transfer" name="nominal_transfer" class="form-control" required>
+                                            <select id="kapal" name="kapal" class="form-control" required>
+                                                <option value="">Pilih Kapal</option>
+
+                                                @foreach (\App\Models\Kapal::where('id_user', auth()->user()->id)->get() as $kapal)
+                                                    <option value="{{ $kapal->id }}"
+                                                        data-biaya="{{ $kapal->jenisKapal->biaya_retribusi }}">
+                                                        {{ $kapal->nama_kapal }} ({{ $kapal->jenisKapal->jenis_kapal }})
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
 
+                                    <!-- Nominal Transfer -->
+                                    <div class="row mb-3">
+                                        <label for="nominal_transfer" class="col-sm-3 col-form-label">Nominal
+                                            Transfer</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" id="nominal_transfer_text" name="nominal_transfer_text"
+                                                class="form-control" readonly placeholder="Nominal Pembayaran" required>
+                                            <input type="hidden" id="nominal_transfer" name="nominal_transfer"
+                                                class="form-control" readonly required>
+                                        </div>
+                                    </div>
+
+
                                     <!-- Nomor Rekening -->
                                     <div class="row mb-3">
-                                        <label for="id_ms_rekening" class="col-sm-3 col-form-label">Nomor Rekening</label>
+                                        <label for="id_ms_rekening" class="col-sm-3 col-form-label">Nomor
+                                            Rekening</label>
                                         <div class="col-sm-9">
-                                            <select id="id_ms_rekening" name="id_ms_rekening" class="form-control" required>
+                                            <select id="id_ms_rekening" name="id_ms_rekening" class="form-control"
+                                                required>
                                                 <option value="">Pilih Rekening</option>
                                                 @foreach ($msRekenings as $rekening)
-                                                    <option value="{{ $rekening->id }}" {{ old('id_ms_rekening') == $rekening->id ? 'selected' : '' }}>
+                                                    <option value="{{ $rekening->id }}"
+                                                        {{ old('id_ms_rekening') == $rekening->id ? 'selected' : '' }}>
                                                         {{ $rekening->no_rekening }} ({{ $rekening->nama_akun }})
                                                     </option>
                                                 @endforeach
@@ -85,7 +111,8 @@
                                     <div class="row mb-3">
                                         <label for="file_bukti" class="col-sm-3 col-form-label">Bukti Pembayaran</label>
                                         <div class="col-sm-9">
-                                            <input type="file" name="file_bukti" class="form-control" accept="image/jpg,image/jpeg,image/png,image/pdf" required>
+                                            <input type="file" name="file_bukti" class="form-control"
+                                                accept="image/jpg,image/jpeg,image/png,image/pdf" required>
                                             <small>file harus berformat JPG,JPEG,PNG</small>
                                         </div>
                                     </div>
@@ -93,7 +120,8 @@
                                     <!-- Submit Button -->
                                     <div class="row">
                                         <div class="col-sm-9 offset-sm-3">
-                                            <button type="submit" class="btn btn-primary mt-4">Konfirmasi Pembayaran</button>
+                                            <button type="submit" class="btn btn-primary mt-4">Konfirmasi
+                                                Pembayaran</button>
                                         </div>
                                     </div>
                                 </form>
@@ -107,6 +135,21 @@
             @include('Template.footer')
         </div>
     </div>
+
+    <script>
+        function formatRupiah(angka) {
+            return 'Rp ' + angka.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        }
+
+        document.getElementById('kapal').addEventListener('change', function() {
+            const nominalInputText = document.getElementById('nominal_transfer_text');
+            const nominalInput = document.getElementById('nominal_transfer');
+            const selectedOption = this.options[this.selectedIndex];
+            const biayaRetribusi = selectedOption.getAttribute('data-biaya');
+            nominalInputText.value = biayaRetribusi ? formatRupiah(biayaRetribusi) : '';
+            nominalInput.value = biayaRetribusi;
+        });
+    </script>
 
     @include('Template.script')
 </body>

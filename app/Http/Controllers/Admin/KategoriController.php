@@ -22,7 +22,7 @@ class KategoriController extends Controller
      */
     public function create()
     {
-        return view('Admin.Kategori.create'); // Sesuaikan nama view untuk form create
+        return view('Admin.Kategori.create');
     }
 
     /**
@@ -31,8 +31,10 @@ class KategoriController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'kategori' => 'required|string|max:50',
-        ]);
+            'kategori' => 'required|string|max:50|unique:kategori,Kategori',
+        ], [
+            'kategori.required' => 'kategori tidak boleh sama',
+    ]);
 
         kategori::create([
             'kategori' => $request->kategori,
@@ -46,7 +48,7 @@ class KategoriController extends Controller
      */
     public function show(string $id)
     {
-        // Implementasi untuk menampilkan data tertentu
+
     }
 
     /**
@@ -59,14 +61,14 @@ class KategoriController extends Controller
             return view('Admin.Kategori.edit', compact('kategori'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id)
     {
         $request->validate([
-            'kategori' => 'required|string|max:50',
-        ]);
+            'kategori' => 'required|string|max:50|unique:kategori,Kategori',
+        ], [
+            'kategori.required' => 'kategori tidak boleh sama',
+    ]);
 
         $kategori = Kategori::findOrFail($id);
         $kategori->update($request->all());
@@ -74,9 +76,7 @@ class KategoriController extends Controller
         return redirect()->route('kategori.index')->with('success', 'Data rekening berhasil ditambahkan.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         $kategori = Kategori::findOrFail($id);

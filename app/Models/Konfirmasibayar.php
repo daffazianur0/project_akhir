@@ -26,6 +26,7 @@ class KonfirmasiBayar extends Model
         'nominal_transfer',
         'tindaklanjut_tgl',
         'tindaklanjut_user',
+        'kapal_id',
     ];
 
     /**
@@ -42,6 +43,11 @@ class KonfirmasiBayar extends Model
     public function msRekening()
     {
         return $this->belongsTo(MsRekening::class, 'id_ms_rekening');
+    }
+
+    public function kapal()
+    {
+        return $this->belongsTo(Kapal::class, 'kapal_id');
     }
 
     /**

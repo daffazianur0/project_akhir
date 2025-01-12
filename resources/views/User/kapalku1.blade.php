@@ -3,6 +3,8 @@
 
 <head>
     @include('Template.head')
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -11,6 +13,7 @@
 
         <!-- Sidebar -->
         @include('Template.left-sidebar')
+        {{-- @dd($kapals) --}}
 
         <!-- Main Wrapper -->
         <div class="body-wrapper">
@@ -24,14 +27,10 @@
                         <div class="card w-100">
                             <div class="table-container mt-4">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="{{ route('kapalku.create')}}" class="btn btn-primary btn-add">Tambah Data</a>
-                                    <div class="input-group" style="width: 200px;">
-                                        <span class="input-group-text">Search:</span>
-                                        <input type="text" class="form-control" placeholder="Search">
-                                    </div>
+                                    <a href="{{ route('kapalku.create') }}" class="btn btn-primary btn-add">Tambah Data</a>
                                 </div>
 
-                                <table class="table table-bordered mt-5">
+                                <table class="table table-bordered mt-5" id="kapalTable">
                                     <thead class="table-light">
                                         <tr>
                                             <th class="text-center" style="width: 5%;">No</th>
@@ -74,7 +73,30 @@
             </div>
         </div>
     </div>
+
     @include('Template.script')
+
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#kapalTable').DataTable({
+                language: {
+                    search: "Cari:",
+                    lengthMenu: "Tampilkan _MENU_ entri",
+                    info: "Menampilkan _START_ hingga _END_ dari _TOTAL_ entri",
+                    infoEmpty: "Tidak ada data tersedia",
+                    zeroRecords: "Tidak ada data ditemukan",
+                    paginate: {
+                        first: "Awal",
+                        last: "Akhir",
+                        next: "Berikutnya",
+                        previous: "Sebelumnya"
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

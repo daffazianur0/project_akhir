@@ -36,7 +36,7 @@
                                             aria-label="Search" aria-describedby="search-label" onkeyup="searchTable()">
                                     </div>
                                 </div>
-
+{{-- @dd($kapals) --}}
                                 <!-- Table -->
                                 <table class="table table-bordered" id="data-table">
                                     <thead class="table-light">
@@ -51,9 +51,9 @@
                                         @foreach ($kapals as $index => $kapal)
                                         <tr>
                                             <td>{{ $index + 1 }}</td>
-                                            <td>{{ $kapal->nama_kapal }}</td>
-                                            <td>Rp {{ number_format($kapal->jenisKapal->biaya_retribusi ?? 0, 0, ',', '.') }}</td>
-                                            <td>{{ $kapal->created_at->format('d F Y') }}</td>
+                                            <td>{{ $kapal->kapal->nama_kapal }}</td>
+                                            <td>Rp {{ number_format($kapal->kapal->jenisKapal->biaya_retribusi ?? 0, 0, ',', '.') }}</td>
+                                            <td>{{ $kapal->created_at->format('d F Y H:i'); }}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
