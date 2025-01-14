@@ -58,6 +58,8 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Laporan Pembayaran Retribusi</h5>
+                                <a href="{{ route('laporan.mpdf') }}" class="btn btn-primary">Cetak Laporan PDF</a>
+                                </div>
                                 <hr>
                                 <div class="table-responsive table-bordered">
                                     <table class="table text-nowrap align-middle mb-0 table-striped" id="dataTable">

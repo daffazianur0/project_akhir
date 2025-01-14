@@ -17,7 +17,7 @@ class KapalWajibController extends Controller
      */
     public function index()
     {
-        $kapal = Kapal::where('id_user', auth()->user()->id)->get();
+        $kapal = Kapal::all();
         return view('Admin.KapalKu', compact('kapal'));
     }
 

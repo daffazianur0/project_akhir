@@ -132,7 +132,9 @@ Route::group(['middleware' => ['auth','ceklevel:admin,karyawan']], function () {
     Route::post('/konfirmasi-bayar/{id}/update-status', [KonfirmasiPembayaranController::class, 'updateStatus'])->name('Konfirmasibayar.update-status');
     Route::get('/KapalRetribusi', [KapalRetribusiController::class, 'index'])->name('KapalRetribusi.index');
     Route::get('/Laporan', [Laporancontroller::class, 'index'])->name('Laporan.index');
-    route::get('/kapalwajibretribusi', [kapalwajibretribusi::class, 'index']);
+    route::get('/kapalwajibretribusi', [kapalwajibretribusi::class, 'index'])->name('kapalwajibretribusi.index');
+
+    Route::get('/Laporan/mpdf', [LaporanController::class, 'cetakMpdf'])->name('laporan.mpdf');
 
 
 });
